@@ -4,13 +4,16 @@ const path = require("path");
 const contentDir = path.join(__dirname, "../src/portfolio-content");
 const outputFile = path.join(__dirname, "../src/lib/portfolioContent.ts");
 
-const files = fs.readdirSync(contentDir).filter(file => fs.statSync(path.join(contentDir, file)).isFile()).sort();
+const files = fs
+  .readdirSync(contentDir)
+  .filter((file) => fs.statSync(path.join(contentDir, file)).isFile())
+  .sort();
 
 const fileContents = {};
 
-files.forEach(file => {
+files.forEach((file) => {
   const filePath = path.join(contentDir, file);
-  const content = fs.readFileSync(filePath, 'utf-8');
+  const content = fs.readFileSync(filePath, "utf-8");
   fileContents[file] = content;
 });
 

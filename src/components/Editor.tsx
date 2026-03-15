@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import type { Monaco } from "@monaco-editor/react";
 import ReactMarkdown from "react-markdown";
@@ -25,6 +25,10 @@ const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
 export default function Editor() {
   const activeFile = useIDEStore((s) => s.activeFile);
   const terminalVisible = useIDEStore((s) => s.terminalVisible);
+  const editorSplitSizes = useIDEStore((s) => s.editorSplitSizes);
+  const markdownSplitSizes = useIDEStore((s) => s.markdownSplitSizes);
+  const setEditorSplitSizes = useIDEStore((s) => s.setEditorSplitSizes);
+  const setMarkdownSplitSizes = useIDEStore((s) => s.setMarkdownSplitSizes);
 
   const isMd = activeFile.endsWith(".md");
   const content = fileContents[activeFile] ?? "";
@@ -32,9 +36,6 @@ export default function Editor() {
 
   const rootRef = useRef<AllotmentHandle | null>(null);
   const mdRef = useRef<AllotmentHandle | null>(null);
-
-  const [rootSizes, setRootSizes] = useState<[number, number]>([0.6, 0.4]);
-  const [mdSizes, setMdSizes] = useState<[number, number]>([0.5, 0.5]);
 
   const handleBeforeMount = useCallback((monaco: Monaco) => {
     monaco.editor.defineTheme("carbonfox", carbonfoxTheme);
@@ -64,11 +65,11 @@ export default function Editor() {
         proportionalLayout={true}
         minSize={minSize}
         snap
-        sizes={terminalVisible ? rootSizes : [1, 0]}
+        sizes={terminalVisible ? editorSplitSizes : [1, 0]}
         onChange={(sizes) => {
           if (sizes.length < 2) return;
           if (!terminalVisible) return;
-          setRootSizes([sizes[0], sizes[1]]);
+          setEditorSplitSizes([sizes[0], sizes[1]]);
         }}
       >
         <Allotment.Pane>
@@ -80,10 +81,10 @@ export default function Editor() {
                 proportionalLayout={true}
                 minSize={minSize}
                 snap
-                sizes={mdSizes}
+                sizes={markdownSplitSizes}
                 onChange={(sizes) => {
                   if (sizes.length < 2) return;
-                  setMdSizes([sizes[0], sizes[1]]);
+                  setMarkdownSplitSizes([sizes[0], sizes[1]]);
                 }}
                 className="w-full h-full md-split-horizontal"
               >

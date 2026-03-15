@@ -85,19 +85,10 @@ export default function Toolbar() {
             }}
           />
         </div>
-        <span
-          className="w-4 h-4"
-          style={{
-            backgroundColor: theme.textMuted,
-            WebkitMaskImage: "url(/icons/app/_root.svg)",
-            maskImage: "url(/icons/app/_root.svg)",
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-            WebkitMaskPosition: "center",
-            maskPosition: "center",
-            WebkitMaskSize: "contain",
-            maskSize: "contain",
-          }}
+        <img
+          src="/icon.svg"
+          alt="Arpan Pandey"
+          className="h-4 w-4"
           aria-hidden="true"
         />
         <span

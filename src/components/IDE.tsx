@@ -4,6 +4,7 @@ import { theme } from "@/lib/theme";
 import { Allotment } from "allotment";
 import "allotment/dist/style.css";
 import { useWindowResize } from "@/lib/useWindowResize";
+import { useIDEStore } from "@/store/ideStore";
 import Toolbar from "./Toolbar";
 import Sidebar from "./Sidebar";
 import BreadCrumb from "./BreadCrumb";
@@ -13,6 +14,8 @@ import TabBar from "./TabBar";
 
 export default function IDE() {
   const { sidebarMin, sidebarMax } = useWindowResize();
+  const sidebarSplitSizes = useIDEStore((s) => s.sidebarSplitSizes);
+  const setSidebarSplitSizes = useIDEStore((s) => s.setSidebarSplitSizes);
 
   return (
     <div
@@ -34,7 +37,15 @@ export default function IDE() {
         <Toolbar />
 
         <div className="flex flex-1 overflow-hidden">
-          <Allotment defaultSizes={[0.2, 0.8]} proportionalLayout={true} snap>
+          <Allotment
+            sizes={sidebarSplitSizes}
+            proportionalLayout={true}
+            snap
+            onChange={(sizes) => {
+              if (sizes.length < 2) return;
+              setSidebarSplitSizes([sizes[0], sizes[1]]);
+            }}
+          >
             <Allotment.Pane minSize={sidebarMin} maxSize={sidebarMax}>
               <Sidebar />
             </Allotment.Pane>

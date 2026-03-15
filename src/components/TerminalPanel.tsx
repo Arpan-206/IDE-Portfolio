@@ -32,6 +32,39 @@ type XTermTheme = {
   brightWhite?: string;
 };
 
+type ShellOutput = {
+  lines: string[];
+  clear?: boolean;
+  open?: string | null;
+  pwd?: string;
+};
+
+type CompleteOutput = {
+  insert: string;
+  candidates: string[];
+  showList?: boolean;
+};
+
+type ShellBackend = {
+  process: (input: string) => ShellOutput;
+  complete: (input: string) => CompleteOutput;
+};
+
+type LoadResult = {
+  backend: ShellBackend | null;
+  error?: string;
+};
+
+type WasmBindings = {
+  default?: (
+    input?: RequestInfo | URL | Response | BufferSource | WebAssembly.Module,
+  ) => Promise<unknown>;
+  Shell?: new (initJson: string) => {
+    process: (input: string) => string;
+    complete: (input: string) => string;
+  };
+};
+
 function mapThemeToXTerm(): XTermTheme {
   return {
     background: theme.bgPanel,
@@ -93,12 +126,87 @@ function writePrompt(term: XTermTerminal) {
   );
 }
 
+function parseShellOutput(raw: string): ShellOutput {
+  try {
+    const parsed = JSON.parse(raw) as ShellOutput;
+    if (!parsed || !Array.isArray(parsed.lines)) {
+      return { lines: [raw] };
+    }
+    return parsed;
+  } catch {
+    return { lines: [raw] };
+  }
+}
+
+function parseCompleteOutput(raw: string): CompleteOutput {
+  try {
+    const parsed = JSON.parse(raw) as {
+      insert?: string;
+      candidates?: string[];
+      show_list?: boolean;
+    };
+    if (!parsed || !Array.isArray(parsed.candidates)) {
+      return { insert: "", candidates: [] };
+    }
+    return {
+      insert: parsed.insert ?? "",
+      candidates: parsed.candidates ?? [],
+      showList: parsed.show_list,
+    };
+  } catch {
+    return { insert: "", candidates: [] };
+  }
+}
+
+async function loadWasmBackend(initPayload: string): Promise<LoadResult> {
+  const wasmUrl = "/wasm/portfolio-wasm/portfolio_wasm_bg.wasm";
+
+  try {
+    const bindings = (await import(
+      /* webpackIgnore: true */ "/wasm/portfolio-wasm/portfolio_wasm.js"
+    )) as WasmBindings;
+
+    if (!bindings) {
+      return { backend: null, error: "wasm module not loaded" };
+    }
+
+    if (typeof bindings.default === "function") {
+      await bindings.default(wasmUrl);
+    }
+
+    if (!bindings.Shell) {
+      return { backend: null, error: "Shell constructor missing" };
+    }
+
+    const shell = new bindings.Shell(initPayload);
+    return {
+      backend: {
+        process: (input: string) => parseShellOutput(shell.process(input)),
+        complete: (input: string) => parseCompleteOutput(shell.complete(input)),
+      },
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    return { backend: null, error: message };
+  }
+}
+
 export default function TerminalPanel() {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const termRef = useRef<XTermTerminal | null>(null);
   const fitAddonRef = useRef<FitAddonType | null>(null);
+  const backendRef = useRef<ShellBackend | null>(null);
   const [ready, setReady] = useState(false);
   const openFile = useIDEStore((s) => s.openFile);
+
+  const initPayload = useMemo(
+    () =>
+      JSON.stringify({
+        files: fileContents,
+        pwd: "~",
+      }),
+    [],
+  );
 
   const options = useMemo<ITerminalOptions>(
     () => ({
@@ -132,6 +240,21 @@ export default function TerminalPanel() {
       term.open(hostRef.current);
       fitAddon.fit();
 
+      const { backend, error } = await loadWasmBackend(initPayload);
+      if (!backend) {
+        term.writeln(
+          colorize(
+            `WASM backend not available.${error ? ` ${error}` : ""}`,
+            theme.accentRed,
+          ),
+        );
+        writePrompt(term);
+        setReady(false);
+      } else {
+        backendRef.current = backend;
+        setReady(true);
+      }
+
       term.writeln(colorize("Welcome to Arpan's shell.", theme.accent));
       term.writeln(
         colorize("Type `help` for available commands.\n", theme.textMuted),
@@ -140,12 +263,68 @@ export default function TerminalPanel() {
 
       let currentLine = "";
 
+      const handleAutocomplete = () => {
+        if (!backendRef.current) {
+          term.write("\u0007");
+          return;
+        }
+
+        const { insert, candidates, showList } =
+          backendRef.current.complete(currentLine);
+
+        if (insert) {
+          currentLine += insert;
+          term.write(insert);
+          return;
+        }
+
+        if (candidates.length === 0) {
+          term.write("\u0007");
+          return;
+        }
+
+        if (showList) {
+          term.write("\r\n");
+          term.writeln(candidates.join("  "));
+          writePrompt(term);
+          term.write(currentLine);
+        }
+      };
+
+      term.onKey((event) => {
+        if (event.domEvent.key === "Tab") {
+          event.domEvent.preventDefault();
+          handleAutocomplete();
+        }
+      });
+
       term.onData((data) => {
         const code = data.charCodeAt(0);
 
         if (data === "\r") {
           term.write("\r\n");
-          handleCommand(term, currentLine.trim(), openFile);
+          if (!backendRef.current) {
+            term.writeln("WASM backend not available. Build the bundle first.");
+            term.writeln("");
+            currentLine = "";
+            writePrompt(term);
+            return;
+          }
+          const output = backendRef.current.process(currentLine.trim());
+
+          if (output.clear) {
+            term.clear();
+          } else {
+            output.lines.forEach((line) => term.writeln(line));
+            if (output.lines.length > 0) {
+              term.writeln("");
+            }
+          }
+
+          if (output.open) {
+            openFile(output.open);
+          }
+
           currentLine = "";
           writePrompt(term);
           return;
@@ -174,7 +353,6 @@ export default function TerminalPanel() {
 
       termRef.current = term;
       fitAddonRef.current = fitAddon;
-      setReady(true);
     }
 
     boot();
@@ -208,7 +386,7 @@ export default function TerminalPanel() {
       termRef.current = null;
       fitAddonRef.current = null;
     };
-  }, [options]);
+  }, [options, initPayload, openFile]);
 
   return (
     <div
@@ -251,75 +429,4 @@ export default function TerminalPanel() {
       />
     </div>
   );
-}
-
-function handleCommand(
-  term: XTermTerminal,
-  input: string,
-  openFile: (file: string) => void,
-) {
-  if (!input) return;
-
-  const [command, ...rest] = input.split(/\s+/);
-  const arg = rest.join(" ");
-  const knownFiles = Object.keys(fileContents);
-
-  switch (command) {
-    case "help":
-      term.writeln("Available commands:");
-      term.writeln("  help              Show this help message");
-      term.writeln("  about             Quick intro");
-      term.writeln("  contact           Show contact info");
-      term.writeln("  clear             Clear the screen");
-      term.writeln("  ls                List portfolio files");
-      term.writeln("  open <file>       Open a file in the editor");
-      term.writeln("  cat <file>        Print a file's contents");
-      break;
-    case "about":
-      term.writeln("Arpan Pandey — Software Engineer");
-      term.writeln("Interests: systems, WebAssembly, hacker UX");
-      break;
-    case "contact":
-      term.writeln("email: hello@arpanpandey.dev");
-      term.writeln("github: https://github.com/Arpan-206");
-      term.writeln("linkedin: https://linkedin.com/in/arpan-pandey");
-      break;
-    case "clear":
-      term.clear();
-      return;
-    case "ls":
-      term.writeln(knownFiles.join("  "));
-      break;
-    case "open":
-      if (!arg) {
-        term.writeln("usage: open <file>");
-        break;
-      }
-      if (!fileContents[arg]) {
-        term.writeln(`file not found: ${arg}`);
-        term.writeln("Type `ls` to list available files.");
-        break;
-      }
-      openFile(arg);
-      term.writeln(`opened ${arg}`);
-      break;
-    case "cat":
-      if (!arg) {
-        term.writeln("usage: cat <file>");
-        break;
-      }
-      if (!fileContents[arg]) {
-        term.writeln(`file not found: ${arg}`);
-        term.writeln("Type `ls` to list available files.");
-        break;
-      }
-      fileContents[arg].split("\n").forEach((line) => term.writeln(line));
-      break;
-    default:
-      term.writeln(`command not found: ${input}`);
-      term.writeln("Type `help` to see available commands.");
-      break;
-  }
-
-  term.writeln("");
 }

@@ -2,54 +2,54 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: "JetBrainsMono Nerd Font";
-    src: url("https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.woff2")
-        format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "JetBrainsMono Nerd Font";
+  src: url("https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFont-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-    --zed-bg: #1b1f24;
-    --zed-bg-panel: #15181d;
-    --zed-bg-hover: #2a3038;
-    --zed-border: #2a2f36;
-    --zed-text: #cdd3df;
-    --zed-text-muted: #8b93a1;
-    --zed-text-active: #ffffff;
-    --zed-accent: #51b3a8;
+  --zed-bg: #1b1f24;
+  --zed-bg-panel: #15181d;
+  --zed-bg-hover: #2a3038;
+  --zed-border: #2a2f36;
+  --zed-text: #cdd3df;
+  --zed-text-muted: #8b93a1;
+  --zed-text-active: #ffffff;
+  --zed-accent: #51b3a8;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    height: 100%;
-    overflow: hidden;
-    background: var(--zed-bg);
-    color: var(--zed-text);
-    font-family:
-        "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", monospace;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  overflow: hidden;
+  background: var(--zed-bg);
+  color: var(--zed-text);
+  font-family:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Fix CLS for split-view layout */
 .split-view-view {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 /* Force markdown split to stay horizontal */
 .md-split-horizontal .split-view {
-    flex-direction: row !important;
+  flex-direction: row !important;
 }
 .md-split-horizontal .split-view-view {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
