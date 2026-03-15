@@ -45,6 +45,7 @@ function IconButton({
 
 export default function Toolbar() {
   const toggleTerminal = useIDEStore((s) => s.toggleTerminal);
+  const terminalVisible = useIDEStore((s) => s.terminalVisible);
 
   return (
     <div
@@ -107,21 +108,33 @@ export default function Toolbar() {
         className="flex items-center gap-2"
         style={{ color: theme.textMuted }}
       >
+        {/*
         <IconButton title="Search" ariaLabel="Search">
           <img src="/icons/app/search.svg" alt="" className="h-4 w-4" />
         </IconButton>
+        */}
 
         <IconButton
           title="Terminal"
           ariaLabel="Terminal"
           onClick={toggleTerminal}
         >
-          <img src="/icons/app/bash.svg" alt="" className="h-4 w-4" />
+          <img
+            src="/icons/app/bash.svg"
+            alt=""
+            className="h-4 w-4"
+            style={{
+              filter: terminalVisible ? "grayscale(1) brightness(0.8)" : "none",
+              opacity: terminalVisible ? 0.6 : 1,
+            }}
+          />
         </IconButton>
 
+        {/*
         <IconButton title="Settings" ariaLabel="Settings">
           <img src="/icons/app/config.svg" alt="" className="h-4 w-4" />
         </IconButton>
+        */}
       </div>
     </div>
   );
