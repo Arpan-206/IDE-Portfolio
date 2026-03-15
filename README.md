@@ -79,3 +79,9 @@ Traditional portfolios are static. This one is an **interactive IDE** that showc
 1. Fork → edit `src/components/` or `src/portfolio-content/`
 2. Run `bun run lint`
 3. Open a PR with screenshots
+
+## 📄 License
+
+© 2026 Arpan Pandey. Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+[![CC BY-SA 4.0](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
