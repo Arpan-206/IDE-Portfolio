@@ -1,0 +1,3 @@
+[build]
+target = "no-modules"
+out-dir = "../public/wasm/portfolio-wasm"
