@@ -162,9 +162,10 @@ async function loadWasmBackend(initPayload: string): Promise<LoadResult> {
   const wasmUrl = "/wasm/portfolio-wasm/portfolio_wasm_bg.wasm";
 
   try {
-    const bindings = (await import(
-      /* webpackIgnore: true */ "/wasm/portfolio-wasm/portfolio_wasm.js"
-    )) as WasmBindings;
+    const importWasm = new Function(
+      "return import('/wasm/portfolio-wasm/portfolio_wasm.js')",
+    ) as () => Promise<WasmBindings>;
+    const bindings = await importWasm();
 
     if (!bindings) {
       return { backend: null, error: "wasm module not loaded" };
