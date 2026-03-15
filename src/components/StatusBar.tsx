@@ -2,29 +2,25 @@
 
 import { useIDEStore } from "@/store/ideStore";
 import { theme } from "@/lib/theme";
-
-const languageMap: Record<string, string> = {
-  "about.ts": "TypeScript",
-  "projects.rs": "Rust",
-  "contact.json": "JSON",
-  "ssh_portal.md": "Markdown",
-};
+import { getLanguageDisplay } from "@/lib/languageMap";
 
 export default function StatusBar() {
   const activeFile = useIDEStore((s) => s.activeFile);
+  const languageDisplay = getLanguageDisplay(activeFile);
 
   return (
     <div
-      className="flex items-center justify-between px-4 shrink-0"
+      className="flex items-center justify-between px-3 shrink-0"
       style={{
-        height: "24px",
+        height: "22px",
         fontSize: "12px",
-        background: theme.accent,
-        color: "#1c1c1c",
+        background: theme.bgPanel,
+        color: theme.textMuted,
+        borderTop: `1px solid ${theme.border}`,
       }}
     >
       <span>Arpan Pandey · Manchester, UK</span>
-      <span>{languageMap[activeFile] ?? ""} · UTF-8</span>
+      <span>{languageDisplay} · UTF-8</span>
     </div>
   );
 }

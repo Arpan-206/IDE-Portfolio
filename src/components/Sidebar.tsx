@@ -1,61 +1,102 @@
 "use client";
 
+import { useState } from "react";
 import { useIDEStore } from "@/store/ideStore";
 import { theme } from "@/lib/theme";
+import { fileNames } from "@/lib/portfolioContent";
+import { useFileTree } from "@/lib/useFileTree";
+import FileTreeNode from "./FileTreeNode";
 
-const files = [
-  { name: "about.ts", icon: "󰛦" },
-  { name: "projects.rs", icon: "󱘗" },
-  { name: "contact.json", icon: "󰘦" },
-  { name: "ssh_portal.md", icon: "󰍔" },
-];
+function RootIcon({ isOpen }: { isOpen: boolean }) {
+  return (
+    <img
+      src={isOpen ? "/icons/app/_root_open.svg" : "/icons/app/_root.svg"}
+      alt=""
+      className="h-4 w-4 shrink-0"
+    />
+  );
+}
 
 export default function Sidebar() {
   const { activeFile, openFile } = useIDEStore();
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(["."]));
+  const fileTree = useFileTree(fileNames);
+
+  const toggleFolder = (path: string) => {
+    setOpenFolders((prev) => {
+      const next = new Set(prev);
+      if (next.has(path)) {
+        next.delete(path);
+      } else {
+        next.add(path);
+      }
+      return next;
+    });
+  };
+
+  const sortedRootChildren = fileTree.children
+    ? [...fileTree.children].sort((a, b) => {
+        if (a.type !== b.type) return a.type === "folder" ? -1 : 1;
+        return a.name.localeCompare(b.name);
+      })
+    : [];
 
   return (
     <div
-      className="w-52 shrink-0 flex flex-col overflow-y-auto"
+      className="flex flex-col overflow-y-auto select-none h-full"
       style={{
+        width: "100%",
         background: theme.bgPanel,
         borderRight: `1px solid ${theme.border}`,
+        color: theme.text,
       }}
     >
-      {/* Header */}
       <div
-        className="px-4 py-2"
+        className="px-3 py-3 shrink-0 border-b"
         style={{
           color: theme.textMuted,
           fontSize: "11px",
           letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          fontWeight: 600,
+          borderBottomColor: theme.border,
         }}
       >
-        PROJECT
+        Files
       </div>
 
-      {/* File list */}
-      {files.map((file) => (
+      <div className="flex-1 overflow-y-auto px-3">
         <button
-          key={file.name}
-          onClick={() => openFile(file.name)}
-          className="flex items-center gap-2 px-4 py-1.5 w-full text-left transition-colors"
+          onClick={() => toggleFolder(".")}
+          onMouseEnter={() => setHovered(".")}
+          onMouseLeave={() => setHovered(null)}
+          className="group w-full flex items-center gap-1 pl-3 pr-3 py-1 text-left transition-colors"
           style={{
             fontSize: "13px",
-            background:
-              activeFile === file.name ? theme.bgHover : "transparent",
-            color: activeFile === file.name ? theme.textActive : theme.text,
-            borderLeft:
-              activeFile === file.name
-                ? `2px solid ${theme.accent}`
-                : "2px solid transparent",
+            color: theme.text,
+            background: hovered === "." ? `${theme.bgHover}40` : "transparent",
           }}
         >
-          <span style={{ color: theme.accent, fontSize: "12px" }}>
-            {file.icon}
-          </span>
-          {file.name}
+          <RootIcon isOpen={openFolders.has(".")} />
+          <span className="truncate text-sm font-medium">{fileTree.name}</span>
         </button>
-      ))}
+
+        {openFolders.has(".") &&
+          sortedRootChildren.map((node) => (
+            <FileTreeNode
+              key={node.path}
+              node={node}
+              depth={1}
+              activeFile={activeFile}
+              onSelect={openFile}
+              hovered={hovered}
+              setHovered={setHovered}
+              openFolders={openFolders}
+              toggleFolder={toggleFolder}
+            />
+          ))}
+      </div>
     </div>
   );
 }

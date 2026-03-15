@@ -8,10 +8,11 @@ export default function BreadCrumb() {
 
   return (
     <div
-      className="flex items-center px-4 shrink-0"
+      className="flex items-center px-3 shrink-0"
       style={{
-        height: "28px",
+        height: "26px",
         fontSize: "12px",
+        letterSpacing: "0.02em",
         color: theme.textMuted,
         borderBottom: `1px solid ${theme.border}`,
         background: theme.bg,
@@ -19,7 +20,7 @@ export default function BreadCrumb() {
     >
       <span>arpan-portfolio</span>
       <span className="mx-1.5">›</span>
-      <span style={{ color: theme.text }}>{activeFile}</span>
+      <span style={{ color: theme.textActive }}>{activeFile}</span>
     </div>
   );
 }

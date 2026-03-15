@@ -1,0 +1,19 @@
+export const fileContents: Record<string, string> = {
+  "about.ts":
+    'export const about = {\n  name: "Arpan Pandey",\n  role: "Software Engineer",\n  location: "Manchester, UK",\n  ssh: "ssh arpanpandey.dev",\n  interests: ["Systems programming", "WebAssembly", "Hacker UX", "Compilers"],\n  currently: "Building weird things at university",\n};\n',
+  "contact.json":
+    '{\n  "email": "hello@arpanpandey.dev",\n  "github": "https://github.com/Arpan-206",\n  "linkedin": "https://linkedin.com/in/arpan-pandey",\n  "website": "https://arpanpandey.dev",\n  "ssh": "ssh arpanpandey.dev"\n}\n',
+  "hello.py": 'print("Hello, world!")\n',
+  "projects.rs":
+    'struct Project {\n    name: &\'static str,\n    stack: &\'static [&\'static str],\n    description: &\'static str,\n    url: &\'static str,\n}\n\nstatic PROJECTS: &[Project] = &[\n    Project {\n        name: "ssh portfolio",\n        stack: &["Go", "Bubble Tea", "Wish"],\n        description: "A portfolio you SSH into. No browser needed.",\n        url: "ssh arpanpandey.dev",\n    },\n    Project {\n        name: "BIOMET",\n        stack: &["Python", "CV", "Biometrics"],\n        description: "Won Conrad Challenge 2024 Power Pitch Award.",\n        url: "github.com/Arpan-206/biomet",\n    },\n    Project {\n        name: "CodeCrafters CLI",\n        stack: &["Go"],\n        description: "Contributed to CLI v43+ and Shell Tester across 73 releases.",\n        url: "github.com/codecrafters-io",\n    },\n    Project {\n        name: "PokeDexter",\n        stack: &["Python", "TTS", "ASCII"],\n        description: "Pokemon CLI with ASCII art and TTS. Featured in CS50 gallery.",\n        url: "github.com/Arpan-206/PokeDexter",\n    },\n];\n',
+  "readme.md":
+    "# SSH Portfolio\n\nThe best way to see my work isn't this website — it's your terminal.\n\n```bash\nssh arpanpandey.dev\n```\n\nNo password. No keys. Just press enter.\n\nBuilt with [Charm's Bubble Tea](https://github.com/charmbracelet/bubbletea)\nfor the TUI and [Wish](https://github.com/charmbracelet/wish) for the SSH server.\n\n## Why?\n\nBecause portfolios don't have to live in browsers.\nInspired by terminal.shop — made it my own with Bubble Tea's component model.\n\n## What you'll find\n\n- All my projects with live links\n- A bit about me\n- Ways to get in touch",
+};
+
+export const fileNames = [
+  "about.ts",
+  "contact.json",
+  "hello.py",
+  "projects.rs",
+  "readme.md",
+];

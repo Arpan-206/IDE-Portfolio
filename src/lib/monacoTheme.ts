@@ -1,0 +1,35 @@
+import type { editor } from "monaco-editor";
+
+export const carbonfoxTheme: editor.IStandaloneThemeData = {
+  base: "vs-dark",
+  inherit: false,
+  rules: [
+    { token: "", foreground: "f2f4f8", background: "161616" },
+    { token: "comment", foreground: "7b7c7e", fontStyle: "italic" },
+    { token: "string", foreground: "3ddbd9" },
+    { token: "number", foreground: "F4A261" },
+    { token: "keyword", foreground: "be95ff", fontStyle: "bold" },
+    { token: "type", foreground: "3ddbd9", fontStyle: "bold" },
+    { token: "function", foreground: "86ABDC" },
+    { token: "parameter", foreground: "33b1ff" },
+    { token: "variable", foreground: "f2f4f8" },
+    { token: "operator", foreground: "9D79D6" },
+    { token: "tag", foreground: "78a9ff" },
+    { token: "attribute", foreground: "9EFFFF" },
+    { token: "preprocessor", foreground: "78a9ff" },
+    { token: "regexp", foreground: "F4A261" },
+    { token: "decorator", foreground: "3ddbd9", fontStyle: "bold" },
+  ],
+  colors: {
+    "editor.background": "#161616",
+    "editor.foreground": "#f2f4f8",
+    "editor.lineHighlightBackground": "#29394e",
+    "editor.selectionBackground": "#252525",
+    "editorLineNumber.foreground": "#7b7c7e",
+    "editorLineNumber.activeForeground": "#CDCECF",
+    "editorCursor.foreground": "#F4A261",
+    "editorIndentGuide.background": "#252525",
+    "editorBracketMatch.background": "#3ddbd933",
+    "editorBracketMatch.border": "#3ddbd9",
+  },
+};
