@@ -1,0 +1,24 @@
+[languages]
+rust = "⭐⭐⭐"
+typescript = "⭐⭐⭐"
+python = "⭐⭐⭐⭐⭐"
+go = "⭐⭐⭐"
+"rust-asm" = "⭐⭐"
+
+[systems]
+docker = "⭐⭐⭐⭐"
+"github-actions" = "⭐⭐⭐⭐"
+linux = "⭐⭐⭐⭐"
+postgresql = "⭐⭐⭐⭐"
+mqtt = "⭐⭐"
+
+[embedded]
+esp32 = "⭐⭐⭐⭐"
+rpi = "⭐⭐⭐⭐"
+stm32 = "⭐⭐⭐"
+arduino = "⭐⭐⭐"
+opencv = "⭐⭐"
+
+[awards]
+nasa = "PowerPitch Winner 2024"
+hashnodex = "Thirdweb Hack Winner 2023"

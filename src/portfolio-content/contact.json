@@ -1,7 +1,17 @@
 {
-  "email": "hello@arpanpandey.dev",
-  "github": "https://github.com/Arpan-206",
-  "linkedin": "https://linkedin.com/in/arpan-pandey",
-  "website": "https://arpanpandey.dev",
-  "ssh": "ssh arpanpandey.dev"
+  "name": "Arpan Pandey",
+  "location": "Manchester, UK",
+  "links": {
+    "github": "https://github.com/Arpan-206",
+    "linkedin": "https://linkedin.com/in/arpan-pandey",
+    "portfolio": "https://arpanpandey.dev"
+  },
+  "open_to": [
+    "Anything tech related",
+    "Internships",
+    "Part-time roles",
+    "Open Source Contributions",
+    "Hackathon collabs",
+    "UniCS sponsorships"
+  ]
 }

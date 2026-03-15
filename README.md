@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IDE-Portfolio
 
-## Getting Started
+Interactive developer portfolio with a **Rust WASM terminal** and a **Zed-inspired UI**.
 
-First, run the development server:
+**Live demo**: [arpanpandey.dev](https://arpanpandey.dev)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+## ✨ Features
+
+- **Rust WASM Terminal** — Live shell in the browser (xterm.js + Rust WASM, tab completion)
+- **Monaco Editor** — VSCode engine with syntax highlighting
+- **Markdown Preview** — Split view for `.md` files
+- **Live File Tree** — Renders `src/portfolio-content/`
+- **Zed-Style Layout** — Allotment splits + custom theme
+- **Multi-file Portfolio** — JSON/RS/Python/TS/TOML content
+- **Responsive UI** — Desktop + mobile friendly
+
+## 🛠 Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
+- **Editor**: Monaco Editor
+- **Terminal**: xterm.js + Rust WASM backend
+- **Layout**: Allotment
+- **State**: Zustand
+- **Tooling**: Bun, Biome
+
+## 📁 Portfolio Structure (`src/portfolio-content/`)
+
+```
+readme.md          ← Personal overview
+contact.json       ← Links + availability
+projects.rs        ← Projects list
+experience.py      ← Work experience
+education.ts       ← Education + certifications
+skills.toml        ← Skills matrix
+```
+
+## 🚀 Quickstart
+
+```
+git clone https://github.com/Arpan-206/IDE-Portfolio.git
+cd IDE-Portfolio
+bun install
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Local**: `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+# Add new portfolio file
+echo "# Skills" > src/portfolio-content/new-skills.md
 
-## Learn More
+# Regenerate content (auto on dev)
+bun script/generate.js
 
-To learn more about Next.js, take a look at the following resources:
+# Build Rust WASM bundle
+just wasm-build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Lint / format
+bun run lint
+bun run format
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📱 Screenshots
 
-## Deploy on Vercel
+![IDE-Portfolio UI](public/screenshots/1.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎯 Why This Exists
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Traditional portfolios are static. This one is an **interactive IDE** that showcases real code and tooling.
+
+- **Recruiters** see a live terminal + structured content
+- **Collaborators** browse real data structures
+- **You** ship a real product (Rust WASM + Next.js)
+
+## 🤝 Contributing
+
+1. Fork → edit `src/components/` or `src/portfolio-content/`
+2. Run `bun run lint`
+3. Open a PR with screenshots

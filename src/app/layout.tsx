@@ -51,12 +51,18 @@ export const metadata: Metadata = {
     title: "Arpan Pandey",
     description:
       "Developer portfolio of Arpan Pandey. Projects, writing, and contact information.",
+    images: [
+      {
+        url: "/screenshots/1.png",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Arpan Pandey",
     description:
       "Developer portfolio of Arpan Pandey. Projects, writing, and contact information.",
+    images: ["/screenshots/1.png"],
   },
   icons: {
     icon: "/icon.svg",

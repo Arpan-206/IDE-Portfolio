@@ -4,24 +4,68 @@ const path = require("path");
 const contentDir = path.join(__dirname, "../src/portfolio-content");
 const outputFile = path.join(__dirname, "../src/lib/portfolioContent.ts");
 
-const files = fs
-  .readdirSync(contentDir)
-  .filter((file) => fs.statSync(path.join(contentDir, file)).isFile())
-  .sort();
+function listFiles(dir, rootDir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const files = [];
 
-const fileContents = {};
+  for (const entry of entries) {
+    const entryPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...listFiles(entryPath, rootDir));
+    } else if (entry.isFile()) {
+      const rel = path.relative(rootDir, entryPath).replace(/\\/g, "/");
+      files.push(rel);
+    }
+  }
 
-files.forEach((file) => {
-  const filePath = path.join(contentDir, file);
-  const content = fs.readFileSync(filePath, "utf-8");
-  fileContents[file] = content;
-});
+  return files;
+}
 
-const tsContent = `export const fileContents: Record<string, string> = ${JSON.stringify(fileContents, null, 2)};
+function generateContent() {
+  const files = listFiles(contentDir, contentDir).sort();
+  const fileContents = {};
+
+  for (const file of files) {
+    const filePath = path.join(contentDir, file);
+    const content = fs.readFileSync(filePath, "utf-8");
+    fileContents[file] = content;
+  }
+
+  const tsContent = `export const fileContents: Record<string, string> = ${JSON.stringify(
+    fileContents,
+    null,
+    2,
+  )};
 
 export const fileNames = ${JSON.stringify(files)};
 `;
 
-fs.writeFileSync(outputFile, tsContent);
+  fs.writeFileSync(outputFile, tsContent);
+  console.log("Portfolio content generated.");
+}
 
-console.log("Portfolio content generated.");
+const isWatch = process.argv.includes("--watch");
+
+generateContent();
+
+if (isWatch) {
+  console.log("Watching portfolio content for changes...");
+  let timer = null;
+
+  const watcher = fs.watch(
+    contentDir,
+    { recursive: true },
+    (_eventType, filename) => {
+      if (!filename) return;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        generateContent();
+      }, 50);
+    },
+  );
+
+  process.on("SIGINT", () => {
+    watcher.close();
+    process.exit(0);
+  });
+}

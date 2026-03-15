@@ -1,33 +1,46 @@
-struct Project {
-    name: &'static str,
-    stack: &'static [&'static str],
-    description: &'static str,
-    url: &'static str,
+#[derive(Debug)]
+pub struct Project {
+    pub name: &'static str,
+    pub description: &'static str,
+    pub tech: &'static [&'static str],
+    pub github: &'static str,
+    pub stars: u32,
 }
 
-static PROJECTS: &[Project] = &[
+pub const PROJECTS: [Project; 6] = [
     Project {
-        name: "ssh portfolio",
-        stack: &["Go", "Bubble Tea", "Wish"],
-        description: "A portfolio you SSH into. No browser needed.",
-        url: "ssh arpanpandey.dev",
+        name: "IDE-Portfolio",
+        description: "Rust WASM terminal + Zed UI + live file tree",
+        tech: &["Rust", "WASM", "Next.js", "Monaco", "Bun"],
+        github: "https://github.com/Arpan-206/IDE-Portfolio",
+        stars: 12,
+    },
+    Project {
+        name: "risc-v-stopwatch",
+        description: "RISC-V assembly LCD stopwatch",
+        tech: &["RISC-V", "Assembly", "LCD", "SYS"],
+        github: "https://github.com/Arpan-206/risc-v-stopwatch",
+        stars: 3,
+    },
+    Project {
+        name: "encrypto-cli",
+        description: "Cross-platform hashing CLI",
+        tech: &["Python", "CLI", "SHA-256", "GitHub Actions"],
+        github: "https://github.com/Arpan-206/encrypto-cli",
+        stars: 2,
+    },
+    Project {
+        name: "Terminal Portfolio",
+        description: "Interactive SSH portfolio",
+        tech: &["Go", "Charm.sh", "Docker"],
+        github: "https://github.com/Arpan-206/terminal-portfolio",
+        stars: 1,
     },
     Project {
         name: "BIOMET",
-        stack: &["Python", "CV", "Biometrics"],
-        description: "Won Conrad Challenge 2024 Power Pitch Award.",
-        url: "github.com/Arpan-206/biomet",
-    },
-    Project {
-        name: "CodeCrafters CLI",
-        stack: &["Go"],
-        description: "Contributed to CLI v43+ and Shell Tester across 73 releases.",
-        url: "github.com/codecrafters-io",
-    },
-    Project {
-        name: "PokeDexter",
-        stack: &["Python", "TTS", "ASCII"],
-        description: "Pokemon CLI with ASCII art and TTS. Featured in CS50 gallery.",
-        url: "github.com/Arpan-206/PokeDexter",
+        description: "RPi biometrics (NASA PowerPitch Winner)",
+        tech: &["Raspberry Pi", "GPIO", "CAD"],
+        github: "",
+        stars: 0,
     },
 ];

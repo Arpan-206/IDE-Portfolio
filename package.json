@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun script/generate.js && next dev",
+    "dev": "bun script/generate.js --watch & next dev",
     "prebuild": "bun script/generate.js",
     "build": "next build",
     "start": "next start",

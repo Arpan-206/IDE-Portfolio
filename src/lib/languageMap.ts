@@ -2,22 +2,24 @@
  * Maps file extensions to language identifiers
  */
 const languageMap: Record<string, string> = {
-  "about.ts": "typescript",
-  "projects.rs": "rust",
   "contact.json": "json",
+  "education.ts": "typescript",
+  "experience.py": "python",
+  "projects.rs": "rust",
   "readme.md": "markdown",
-  "hello.py": "python",
+  "skills.toml": "toml",
 };
 
 /**
  * Maps file extensions to display labels
  */
 const languageDisplayMap: Record<string, string> = {
-  "about.ts": "TypeScript",
-  "projects.rs": "Rust",
   "contact.json": "JSON",
+  "education.ts": "TypeScript",
+  "experience.py": "Python",
+  "projects.rs": "Rust",
   "readme.md": "Markdown",
-  "hello.py": "Python",
+  "skills.toml": "TOML",
 };
 
 export function getLanguage(filename: string): string {
