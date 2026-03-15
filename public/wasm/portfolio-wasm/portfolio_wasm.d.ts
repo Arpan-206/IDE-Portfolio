@@ -5,6 +5,9 @@ export class Shell {
     free(): void;
     [Symbol.dispose](): void;
     complete(input: string): string;
+    history_down(_current: string): string;
+    history_reset(): void;
+    history_up(current: string): string;
     constructor(init_json: string);
     process(input: string): string;
 }
@@ -15,6 +18,9 @@ export interface InitOutput {
     readonly memory: WebAssembly.Memory;
     readonly __wbg_shell_free: (a: number, b: number) => void;
     readonly shell_complete: (a: number, b: number, c: number) => [number, number];
+    readonly shell_history_down: (a: number, b: number, c: number) => [number, number];
+    readonly shell_history_reset: (a: number) => void;
+    readonly shell_history_up: (a: number, b: number, c: number) => [number, number];
     readonly shell_new: (a: number, b: number) => [number, number, number];
     readonly shell_process: (a: number, b: number, c: number) => [number, number];
     readonly __wbindgen_externrefs: WebAssembly.Table;

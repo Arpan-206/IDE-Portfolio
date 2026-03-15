@@ -45,9 +45,17 @@ type CompleteOutput = {
   showList?: boolean;
 };
 
+type HistoryOutput = {
+  line: string;
+  changed: boolean;
+};
+
 type ShellBackend = {
   process: (input: string) => ShellOutput;
   complete: (input: string) => CompleteOutput;
+  historyUp: (input: string) => HistoryOutput;
+  historyDown: (input: string) => HistoryOutput;
+  historyReset: () => void;
 };
 
 type LoadResult = {
@@ -62,6 +70,9 @@ type WasmBindings = {
   Shell?: new (initJson: string) => {
     process: (input: string) => string;
     complete: (input: string) => string;
+    history_up: (input: string) => string;
+    history_down: (input: string) => string;
+    history_reset: () => void;
   };
 };
 
@@ -91,7 +102,7 @@ function mapThemeToXTerm(): XTermTheme {
   };
 }
 
-const PROMPT_USER = "arpan@portfolio";
+const PROMPT_USER = "parth@kurukshetra";
 const PROMPT_PATH = "~";
 const PROMPT_SYMBOL = "$";
 const ANSI_RESET = "\x1b[0m";
@@ -158,6 +169,21 @@ function parseCompleteOutput(raw: string): CompleteOutput {
   }
 }
 
+function parseHistoryOutput(raw: string): HistoryOutput {
+  try {
+    const parsed = JSON.parse(raw) as {
+      line?: string;
+      changed?: boolean;
+    };
+    return {
+      line: parsed?.line ?? "",
+      changed: Boolean(parsed?.changed),
+    };
+  } catch {
+    return { line: "", changed: false };
+  }
+}
+
 async function loadWasmBackend(initPayload: string): Promise<LoadResult> {
   const wasmUrl = "/wasm/portfolio-wasm/portfolio_wasm_bg.wasm";
 
@@ -184,6 +210,13 @@ async function loadWasmBackend(initPayload: string): Promise<LoadResult> {
       backend: {
         process: (input: string) => parseShellOutput(shell.process(input)),
         complete: (input: string) => parseCompleteOutput(shell.complete(input)),
+        historyUp: (input: string) =>
+          parseHistoryOutput(shell.history_up(input)),
+        historyDown: (input: string) =>
+          parseHistoryOutput(shell.history_down(input)),
+        historyReset: () => {
+          shell.history_reset();
+        },
       },
     };
   } catch (error) {
@@ -264,6 +297,14 @@ export default function TerminalPanel() {
 
       let currentLine = "";
 
+      const replaceCurrentLine = (nextLine: string) => {
+        currentLine = nextLine;
+        term.write("\r");
+        term.write("\x1b[2K");
+        writePrompt(term);
+        term.write(currentLine);
+      };
+
       const handleAutocomplete = () => {
         if (!backendRef.current) {
           term.write("\u0007");
@@ -300,6 +341,34 @@ export default function TerminalPanel() {
       });
 
       term.onData((data) => {
+        if (data === "\u001b[A") {
+          if (!backendRef.current) {
+            term.write("\u0007");
+            return;
+          }
+          const { line, changed } = backendRef.current.historyUp(currentLine);
+          if (!changed) {
+            term.write("\u0007");
+            return;
+          }
+          replaceCurrentLine(line);
+          return;
+        }
+
+        if (data === "\u001b[B") {
+          if (!backendRef.current) {
+            term.write("\u0007");
+            return;
+          }
+          const { line, changed } = backendRef.current.historyDown(currentLine);
+          if (!changed) {
+            term.write("\u0007");
+            return;
+          }
+          replaceCurrentLine(line);
+          return;
+        }
+
         const code = data.charCodeAt(0);
 
         if (data === "\r") {
@@ -334,6 +403,7 @@ export default function TerminalPanel() {
         if (data === "\u0003") {
           term.write("^C\r\n");
           currentLine = "";
+          backendRef.current?.historyReset();
           writePrompt(term);
           return;
         }

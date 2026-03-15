@@ -3,6 +3,9 @@
 export const memory: WebAssembly.Memory;
 export const __wbg_shell_free: (a: number, b: number) => void;
 export const shell_complete: (a: number, b: number, c: number) => [number, number];
+export const shell_history_down: (a: number, b: number, c: number) => [number, number];
+export const shell_history_reset: (a: number) => void;
+export const shell_history_up: (a: number, b: number, c: number) => [number, number];
 export const shell_new: (a: number, b: number) => [number, number, number];
 export const shell_process: (a: number, b: number, c: number) => [number, number];
 export const __wbindgen_externrefs: WebAssembly.Table;
