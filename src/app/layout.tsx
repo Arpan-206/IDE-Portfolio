@@ -5,8 +5,59 @@ import "./globals.css";
 const mono = JetBrains_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Arpan Pandey",
-  description: "Developer portfolio",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://arpanpandey.dev",
+  ),
+  title: {
+    default: "Arpan Pandey",
+    template: "%s | Arpan Pandey",
+  },
+  description:
+    "Developer portfolio of Arpan Pandey. Projects, writing, and contact information.",
+  applicationName: "Arpan Pandey",
+  authors: [{ name: "Arpan Pandey" }],
+  generator: "Next.js",
+  keywords: [
+    "Arpan Pandey",
+    "portfolio",
+    "developer",
+    "software engineer",
+    "projects",
+    "writing",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: "Arpan Pandey",
+    title: "Arpan Pandey",
+    description:
+      "Developer portfolio of Arpan Pandey. Projects, writing, and contact information.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Arpan Pandey",
+    description:
+      "Developer portfolio of Arpan Pandey. Projects, writing, and contact information.",
+  },
   icons: {
     icon: "/icon.svg",
   },
