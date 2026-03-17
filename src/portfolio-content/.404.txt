@@ -1,0 +1,15 @@
+# 404 — Not Found
+
+The file or page you requested could not be found.
+
+This is a hidden fallback file. It only appears when:
+- You explicitly open it (for example via `?open=.404.txt`), or
+- The `?open=` query requested a filename that doesn't exist, and the app fell back to this file.
+
+Tips:
+- To open a known file use: `?open=readme.md` (replace with any visible filename).
+- Visible files are listed in the IDE's Files sidebar; hidden files (like this one) begin with a dot and are intentionally omitted from the sidebar.
+
+If you think this is an error, try:
+- Checking the filename you requested for typos.
+- Opening a visible fallback like `readme.md`.
