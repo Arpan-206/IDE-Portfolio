@@ -24,6 +24,10 @@ const appIconMap: Record<string, FileIcon> = {
   // Other
   sh: { path: "/icons/app/bash.svg" },
   bash: { path: "/icons/app/bash.svg" },
+  // Calendar / iCal files: map `.cal` and `.ics` to a calendar-style icon.
+  // The calendar icon asset should live at /public/icons/app/ical.svg
+  cal: { path: "/icons/app/ical.svg" },
+  ics: { path: "/icons/app/ical.svg" },
 };
 
 const appFileNameMap: Record<string, FileIcon> = {

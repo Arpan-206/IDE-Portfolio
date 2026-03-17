@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img" aria-label="iCal (macchiato) file icon">
+  <title>iCal (macchiato)</title>
+  <!-- Catppuccin macchiato - accent teal: #8bd5ca -->
+  <!-- Transparent background so icon sits on dark/black backgrounds -->
+  <g fill="none" stroke="#8bd5ca" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+    <!-- Outer rounded calendar body -->
+    <rect x="1.2" y="2" width="13.6" height="11.2" rx="2"/>
+    <!-- Header band (subtle filled accent for contrast on dark BG) -->
+    <rect x="1.2" y="2" width="13.6" height="3.2" rx="1" fill="#8bd5ca" opacity="0.10" stroke="none"/>
+    <!-- Divider under header -->
+    <path d="M1.2 5.6h13.6" stroke="#8bd5ca" stroke-width="0.9" />
+  </g>
+
+  <!-- Date markers (filled accent for good visibility on dark background) -->
+  <g fill="#8bd5ca">
+    <circle cx="4.4" cy="9.6" r="0.72" />
+    <circle cx="8.0" cy="9.6" r="0.72" />
+    <circle cx="11.6" cy="9.6" r="0.72" />
+  </g>
+
+  <!-- Top binder rings to match pack icon styling -->
+  <g stroke="#8bd5ca" stroke-width="1" stroke-linecap="round">
+    <path d="M5.0 1.2v1.6" />
+    <path d="M11.0 1.2v1.6" />
+  </g>
+</svg>

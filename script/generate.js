@@ -31,6 +31,22 @@ function generateContent() {
     fileContents[file] = content;
   }
 
+  // Virtual files: these are "files" that don't exist on disk but should
+  // be exposed in the generated bundle. Useful for integrations like Cal.com.
+  const virtualFiles = {
+    // Simple Cal.com virtual file — content is just the URL used as iframe src.
+    "meet.cal": "https://cal.com/arpanp/meet-w-arpan",
+  };
+
+  // Merge virtual files into the lists that will be serialized.
+  for (const [vfName, vfContent] of Object.entries(virtualFiles)) {
+    if (!files.includes(vfName)) {
+      files.push(vfName);
+    }
+    fileContents[vfName] = vfContent;
+  }
+
+  // Keep output generation unchanged but now includes virtual files.
   const tsContent = `export const fileContents: Record<string, string> = ${JSON.stringify(
     fileContents,
     null,

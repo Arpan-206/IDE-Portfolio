@@ -8,6 +8,7 @@ const languageMap: Record<string, string> = {
   "projects.rs": "rust",
   "readme.md": "markdown",
   "skills.toml": "toml",
+  "meet.cal": "markdown",
 };
 
 /**
@@ -20,6 +21,7 @@ const languageDisplayMap: Record<string, string> = {
   "projects.rs": "Rust",
   "readme.md": "Markdown",
   "skills.toml": "TOML",
+  "meet.cal": "Cal.com",
 };
 
 export function getLanguage(filename: string): string {

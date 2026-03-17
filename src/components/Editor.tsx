@@ -31,6 +31,7 @@ export default function Editor() {
   const setMarkdownSplitSizes = useIDEStore((s) => s.setMarkdownSplitSizes);
 
   const isMd = activeFile.endsWith(".md");
+  const isMeetCal = activeFile === "meet.cal";
   const content = fileContents[activeFile] ?? "";
   const { minSize, fontSize } = useWindowResize();
 
@@ -73,7 +74,20 @@ export default function Editor() {
         }}
       >
         <Allotment.Pane>
-          {isMd ? (
+          {isMeetCal ? (
+            <div className="flex h-full w-full min-h-0 min-w-0">
+              <iframe
+                title="Schedule with Arpan"
+                // Use the virtual file content (a Cal.com URL) as the iframe src.
+                // Fall back to about:blank if content is missing/invalid.
+                src={content?.trim() ?? "about:blank"}
+                style={{ width: "100%", height: "100%", border: 0 }}
+                loading="lazy"
+                // Allow common embed behaviors for schedulers like Cal.com
+                sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+              />
+            </div>
+          ) : isMd ? (
             <div className="flex h-full w-full min-h-0 min-w-0">
               <Allotment
                 ref={mdRef}
