@@ -1,4 +1,5 @@
 export const fileContents: Record<string, string> = {
+  ".404.txt": "# 404 — Not Found\n\nThe file or page you requested could not be found.\n\nThis is a hidden fallback file. It only appears when:\n- You explicitly open it (for example via `?open=.404.txt`), or\n- The `?open=` query requested a filename that doesn't exist, and the app fell back to this file.\n\nTips:\n- To open a known file use: `?open=readme.md` (replace with any visible filename).\n- Visible files are listed in the IDE's Files sidebar; hidden files (like this one) begin with a dot and are intentionally omitted from the sidebar.\n\nIf you think this is an error, try:\n- Checking the filename you requested for typos.\n- Opening a visible fallback like `readme.md`.\n",
   "contact.json": "{\n  \"name\": \"Arpan Pandey\",\n  \"location\": \"Manchester, UK\",\n  \"links\": {\n    \"github\": \"https://github.com/Arpan-206\",\n    \"linkedin\": \"https://linkedin.com/in/arpan-pandey\",\n    \"portfolio\": \"https://arpanpandey.dev\"\n  },\n  \"open_to\": [\n    \"Anything tech related\",\n    \"Internships\",\n    \"Part-time roles\",\n    \"Open Source Contributions\",\n    \"Hackathon collabs\",\n    \"UniCS sponsorships\"\n  ]\n}\n",
   "education.ts": "interface EducationEntry {\n  institution: string;\n  degree: string;\n  dates: string;\n  gpa: string;\n  highlights: string[];\n}\n\ninterface Certification {\n  name: string;\n  issuer: string;\n  year: number;\n}\n\nconst EDUCATION: EducationEntry[] = [\n  {\n    institution: \"University of Manchester\",\n    degree: \"BSc Computer Science (Hons)\",\n    dates: \"2024–2027\",\n    gpa: \"First Class (Year 1)\",\n    highlights: [\n      \"Academic Rep (400 students)\",\n      \"Architecture, Systems, Robotics\",\n      \"Micro-architecture, Algorithms\",\n    ],\n  },\n  {\n    institution: \"Army Public School\",\n    degree: \"CBSE Grade 12 (PCM + CS)\",\n    dates: \"2022–2024\",\n    gpa: \"94%\",\n    highlights: [\"Genesis Tech Club President\", \"TAPSFest (1,000 attendees)\"],\n  },\n];\n\nconst CERTIFICATIONS: Certification[] = [\n  { name: \"CS50x + Python\", issuer: \"Harvard\", year: 2023 },\n  { name: \"CS50 Puzzle Day (Top 89)\", issuer: \"Harvard\", year: 2022 },\n  { name: \"Three.js Journey\", issuer: \"Bruno Simon\", year: 2023 },\n  { name: \"J.P. Morgan SWE Sim\", issuer: \"Forage\", year: 2023 },\n  { name: \"PowerPitch Winner\", issuer: \"NASA Houston\", year: 2024 },\n];\n",
   "experience.py": "from dataclasses import dataclass\nfrom typing import List\n\n\n@dataclass\nclass Experience:\n    company: str\n    role: str\n    period: str\n    achievements: List[str]\n\n\nEXPERIENCE = [\n    Experience(\n        company=\"CodeCrafters.io (YC S22)\",\n        role=\"Software Engineer\",\n        period=\"Apr–Oct 2025\",\n        achievements=[\n            \"Go harnesses for shell/signals (100k devs)\",\n            \"Rails/Ember (50k MAU)\",\n            \"Docker CI/CD (+25% velocity)\",\n        ],\n    ),\n    Experience(\n        company=\"UniCS Manchester\",\n        role=\"Co-Chair\",\n        period=\"Nov 2024–Present\",\n        achievements=[\n            \"1,500 students | £55k budget\",\n            \"2 hackathons (150+ participants)\",\n            \"Corporate partnerships\",\n        ],\n    ),\n    Experience(\n        company=\"Imago\",\n        role=\"Software Developer\",\n        period=\"Jan–May 2025\",\n        achievements=[\n            \"Python/SQL pipelines (-60% research)\",\n            \"Production dashboards\",\n            \"GitHub Actions CI\",\n        ],\n    ),\n    Experience(\n        company=\"Hack Club\",\n        role=\"Director SAD\",\n        period=\"May 2024–Jan 2025\",\n        achievements=[\n            \"Hack Club Arcade (2k participants)\",\n            \"$100k prizes | 15-member team\",\n            \"Fraud team (-90%)\",\n        ],\n    ),\n    Experience(\n        company=\"IHFC TIH IIT Delhi\",\n        role=\"Robotics Intern\",\n        period=\"Jun–Aug 2024\",\n        achievements=[\n            \"UAV/glider prototyping\",\n            \"Aerodynamics testing\",\n            \"Drone programming\",\n        ],\n    ),\n]\n",
@@ -8,4 +9,17 @@ export const fileContents: Record<string, string> = {
   "meet.cal": "https://cal.com/arpanp/meet-w-arpan"
 };
 
-export const fileNames = ["contact.json","education.ts","experience.py","projects.rs","readme.md","skills.toml","meet.cal"];
+export const fileNamesAll = [
+  ".404.txt",
+  "contact.json",
+  "education.ts",
+  "experience.py",
+  "projects.rs",
+  "readme.md",
+  "skills.toml",
+  "meet.cal"
+];
+
+export const visibleFileNames = fileNamesAll.filter((n) => !n.startsWith("."));
+
+export const fileNames = visibleFileNames;

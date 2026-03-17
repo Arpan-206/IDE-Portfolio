@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect } from "react";
 import { theme } from "@/lib/theme";
 import { Allotment } from "allotment";
 import "allotment/dist/style.css";
 import { useWindowResize } from "@/lib/useWindowResize";
 import { useIDEStore } from "@/store/ideStore";
+import { fileNames, fileNamesAll, fileContents } from "@/lib/portfolioContent";
 import Toolbar from "./Toolbar";
 import Sidebar from "./Sidebar";
 import BreadCrumb from "./BreadCrumb";
@@ -16,6 +18,37 @@ export default function IDE() {
   const { sidebarMin, sidebarMax } = useWindowResize();
   const sidebarSplitSizes = useIDEStore((s) => s.sidebarSplitSizes);
   const setSidebarSplitSizes = useIDEStore((s) => s.setSidebarSplitSizes);
+  const openFile = useIDEStore((s) => s.openFile);
+
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const param = params.get("open");
+      if (!param) return;
+
+      const name = decodeURIComponent(param);
+
+      // Build list of all known file names (including invisible ones like the 404 fallback)
+      const knownNames = fileNamesAll;
+
+      if (knownNames.includes(name)) {
+        // Requested file exists (visible or not) — open it
+        openFile(name);
+      } else {
+        // Requested file not known — fall back to the 404 file if present.
+        // Prefer dotfile `.404*` if present, otherwise fall back to `404*`.
+        const fallback =
+          Object.keys(fileContents).find((k) => k.startsWith(".404")) ??
+          Object.keys(fileContents).find((k) => k.startsWith("404"));
+        if (fallback) {
+          openFile(fallback);
+        }
+      }
+    } catch (e) {
+      // ignore any parsing errors
+    }
+    // run once on mount; openFile is stable from zustand but include it to satisfy hooks linter
+  }, [openFile]);
 
   return (
     <div

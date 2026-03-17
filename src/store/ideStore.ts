@@ -16,7 +16,7 @@ type IDEStore = {
   setSidebarSplitSizes: (sizes: [number, number]) => void;
 };
 
-const DEFAULT_EDITOR_SPLIT: [number, number] = [0.7, 0.3];
+const DEFAULT_EDITOR_SPLIT: [number, number] = [0.8, 0.2];
 const DEFAULT_MARKDOWN_SPLIT: [number, number] = [0.5, 0.5];
 const DEFAULT_SIDEBAR_SPLIT: [number, number] = [0.2, 0.8];
 

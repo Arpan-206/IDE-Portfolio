@@ -46,14 +46,21 @@ function generateContent() {
     fileContents[vfName] = vfContent;
   }
 
-  // Keep output generation unchanged but now includes virtual files.
+  // Emit fileContents plus derived filename lists:
+  // - fileNamesAll: all known filenames (including dotfiles)
+  // - visibleFileNames: files to show in the sidebar (filter out dotfiles)
+  // - fileNames: backwards-compatible alias equal to visibleFileNames
   const tsContent = `export const fileContents: Record<string, string> = ${JSON.stringify(
     fileContents,
     null,
     2,
   )};
 
-export const fileNames = ${JSON.stringify(files)};
+export const fileNamesAll = ${JSON.stringify(files, null, 2)};
+
+export const visibleFileNames = fileNamesAll.filter((n) => !n.startsWith("."));
+
+export const fileNames = visibleFileNames;
 `;
 
   fs.writeFileSync(outputFile, tsContent);

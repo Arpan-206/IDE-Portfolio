@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useIDEStore } from "@/store/ideStore";
 import { theme } from "@/lib/theme";
-import { fileNames } from "@/lib/portfolioContent";
+import { visibleFileNames } from "@/lib/portfolioContent";
 import { useFileTree } from "@/lib/useFileTree";
 import FileTreeNode from "./FileTreeNode";
 
@@ -21,7 +21,7 @@ export default function Sidebar() {
   const { activeFile, openFile } = useIDEStore();
   const [hovered, setHovered] = useState<string | null>(null);
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set(["."]));
-  const fileTree = useFileTree(fileNames);
+  const fileTree = useFileTree(visibleFileNames);
 
   const toggleFolder = (path: string) => {
     setOpenFolders((prev) => {

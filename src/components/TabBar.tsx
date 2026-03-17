@@ -42,7 +42,9 @@ export default function TabBar() {
               color: isActive ? theme.textActive : theme.textMuted,
               borderRight: `1px solid ${theme.border}`,
               borderTop: isActive
-                ? `1px solid ${theme.accent}`
+                ? tab.startsWith(".")
+                  ? `2px solid ${theme.accentRed}`
+                  : `1px solid ${theme.accent}`
                 : "1px solid transparent",
             }}
             onClick={() => openFile(tab)}

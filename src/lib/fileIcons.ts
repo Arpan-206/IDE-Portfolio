@@ -20,6 +20,8 @@ const appIconMap: Record<string, FileIcon> = {
   xml: { path: "/icons/app/xml.svg" },
   yaml: { path: "/icons/app/yaml.svg" },
   yml: { path: "/icons/app/yaml.svg" },
+  toml: { path: "/icons/app/toml.svg" },
+  txt: { path: "/icons/app/text.svg" },
 
   // Other
   sh: { path: "/icons/app/bash.svg" },
