@@ -12,7 +12,6 @@ Interactive developer portfolio with a **Rust WASM terminal** and a **Zed-inspir
 - **Live File Tree** — Renders `src/portfolio-content/`
 - **Zed-Style Layout** — Allotment splits + custom theme
 - **Multi-file Portfolio** — JSON/RS/Python/TS/TOML content
-- **Responsive UI** — Desktop + mobile friendly
 
 ## 🛠 Tech Stack
 
