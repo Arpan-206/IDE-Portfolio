@@ -8,10 +8,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "speed-insights": "npx @vercel/speed-insights"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
+    "@vercel/analytics": "^2.0.1",
     "@xterm/addon-fit": "^0.11.0",
     "allotment": "^1.20.5",
     "github-markdown-css": "^5.9.0",
@@ -29,6 +31,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vercel/speed-insights": "^2.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
