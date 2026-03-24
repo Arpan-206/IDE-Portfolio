@@ -91,6 +91,8 @@ export default function RootLayout({
           src="https://cloud.umami.is/script.js"
           data-website-id="45f2d98a-df6c-4c68-8c56-215354e04fa9"
         ></script>
+        <Analytics />
+        <SpeedInsights />
       </head>
       <body className={mono.className}>{children}</body>
     </html>
