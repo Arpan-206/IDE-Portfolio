@@ -12,12 +12,12 @@ interface Certification {
   year: number;
 }
 
-const EDUCATION: EducationEntry[] = [
+const _EDUCATION: EducationEntry[] = [
   {
     institution: "University of Manchester",
     degree: "BSc Computer Science (Hons)",
     dates: "2024–2027",
-    gpa: "First Class (Year 1)",
+    gpa: "First Class (Year 1 And Y2 Sem 1)",
     highlights: [
       "Academic Rep (400 students)",
       "Architecture, Systems, Robotics",
@@ -33,7 +33,7 @@ const EDUCATION: EducationEntry[] = [
   },
 ];
 
-const CERTIFICATIONS: Certification[] = [
+const _CERTIFICATIONS: Certification[] = [
   { name: "CS50x + Python", issuer: "Harvard", year: 2023 },
   { name: "CS50 Puzzle Day (Top 89)", issuer: "Harvard", year: 2022 },
   { name: "Three.js Journey", issuer: "Bruno Simon", year: 2023 },

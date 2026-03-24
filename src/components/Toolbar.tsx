@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import Image from "next/image";
+import type React from "react";
+import { useState } from "react";
 import { theme } from "@/lib/theme";
 import { useIDEStore } from "@/store/ideStore";
 
@@ -24,6 +26,7 @@ function IconButton({
 
   return (
     <button
+      type="button"
       aria-label={ariaLabel ?? title}
       title={title}
       className="transition-colors p-1 rounded"
@@ -86,11 +89,13 @@ export default function Toolbar() {
             }}
           />
         </div>
-        <img
+        <Image
           src="/icon.svg"
           alt="Arpan Pandey"
-          className="h-4 w-4"
+          width={16}
+          height={16}
           aria-hidden="true"
+          className="h-4 w-4"
         />
         <span
           style={{
@@ -119,9 +124,11 @@ export default function Toolbar() {
           ariaLabel="Terminal"
           onClick={toggleTerminal}
         >
-          <img
+          <Image
             src="/icons/app/bash.svg"
             alt=""
+            width={16}
+            height={16}
             className="h-4 w-4"
             style={{
               filter: terminalVisible ? "grayscale(1) brightness(0.8)" : "none",

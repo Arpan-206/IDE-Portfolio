@@ -1,7 +1,7 @@
 "use client";
 
-import { useIDEStore } from "@/store/ideStore";
 import { theme } from "@/lib/theme";
+import { useIDEStore } from "@/store/ideStore";
 
 export default function BreadCrumb() {
   const activeFile = useIDEStore((s) => s.activeFile);

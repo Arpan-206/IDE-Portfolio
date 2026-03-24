@@ -1,17 +1,20 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
-import { useIDEStore } from "@/store/ideStore";
-import { theme } from "@/lib/theme";
 import { visibleFileNames } from "@/lib/portfolioContent";
+import { theme } from "@/lib/theme";
 import { useFileTree } from "@/lib/useFileTree";
+import { useIDEStore } from "@/store/ideStore";
 import FileTreeNode from "./FileTreeNode";
 
 function RootIcon({ isOpen }: { isOpen: boolean }) {
   return (
-    <img
+    <Image
       src={isOpen ? "/icons/app/_root_open.svg" : "/icons/app/_root.svg"}
       alt=""
+      width={16}
+      height={16}
       className="h-4 w-4 shrink-0"
     />
   );
@@ -68,6 +71,7 @@ export default function Sidebar() {
 
       <div className="flex-1 overflow-y-auto px-3">
         <button
+          type="button"
           onClick={() => toggleFolder(".")}
           onMouseEnter={() => setHovered(".")}
           onMouseLeave={() => setHovered(null)}

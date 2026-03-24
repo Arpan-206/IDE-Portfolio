@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { FileNode } from "@/types/FileNode";
+import type { FileNode } from "@/types/FileNode";
 
 /**
  * Build tree structure from flat file names array

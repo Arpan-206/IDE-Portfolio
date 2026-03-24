@@ -1,22 +1,22 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef } from "react";
-import dynamic from "next/dynamic";
 import type { Monaco } from "@monaco-editor/react";
+import type { AllotmentHandle } from "allotment";
+import { Allotment } from "allotment";
+import dynamic from "next/dynamic";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-import { Allotment } from "allotment";
-import type { AllotmentHandle } from "allotment";
 import "allotment/dist/style.css";
 import "github-markdown-css/github-markdown-dark.css";
-import { useIDEStore } from "@/store/ideStore";
-import { theme as appTheme } from "@/lib/theme";
-import { carbonfoxTheme } from "@/lib/monacoTheme";
-import { fileContents } from "@/lib/portfolioContent";
+import TerminalPanel from "@/components/TerminalPanel";
 import { getLanguage } from "@/lib/languageMap";
 import { createMonacoOptions } from "@/lib/monacoOptions";
+import { carbonfoxTheme } from "@/lib/monacoTheme";
+import { fileContents } from "@/lib/portfolioContent";
+import { theme as appTheme } from "@/lib/theme";
 import { useWindowResize } from "@/lib/useWindowResize";
-import TerminalPanel from "@/components/TerminalPanel";
+import { useIDEStore } from "@/store/ideStore";
 
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
   ssr: false,
@@ -56,7 +56,7 @@ export default function Editor() {
     }, 0);
 
     return () => window.clearTimeout(t);
-  }, [terminalVisible, isMd, activeFile]);
+  }, []);
 
   return (
     <div className="flex flex-1 overflow-hidden">

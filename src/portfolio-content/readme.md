@@ -5,7 +5,7 @@ Manchester ↔ Delhi | Building [arpanpandey.dev](https://arpanpandey.dev)
 
 ---
 
-From drones and Linux devices to distributed systems and production software. I've spent years bridging hardware and software—prototyping UAVs one semester, scaling platforms for 30k users the next.
+From drones and Linux devices to distributed systems and production software. I've spent years bridging hardware and software—prototyping UAVs one semester, scaling platforms for 50k users the next.
 
 This portfolio runs **Rust WASM in your browser**. Open the terminal. Type `help`.
 
@@ -16,17 +16,17 @@ Zed-inspired IDE with Monaco, live file tree, Rust WASM shell, PDF viewer.
 Next.js + Bun + allotment + Catppuccin.  
 [Live](https://arpanpandey.dev) | [Code](https://github.com/Arpan-206/IDE-Portfolio)
 
-**CodeCrafters** (YC W23)  
-Go harnesses for systems programming challenges (100k+ devs).  
-Rails/Ember platform serving 30k monthly users.  
-Docker CI/CD optimizations.
+**CodeCrafters** (YC 22)  
+Go harnesses for systems programming challenges (10,000+ devs in 2 months).  
+Rails/Ember platform serving 50k+ monthly active users.  
+Docker CI/CD optimizations (+25% team efficiency).
 
 **Fixate** (Imago)  
 Python/SQL pipelines cut research workload 60%.  
 Reproducible dashboards for commercialization.
 
 **BIOMET**  
-**PowerPitch Winner** (NASA Houston 2024).  
+**PowerPitch Winner** – Conrad Challenge 2024 at NASA Space Center Houston.  
 Raspberry Pi biometrics + CAD + real-time GPIO.
 
 **Terminal Portfolio**  
@@ -34,13 +34,10 @@ Interactive SSH portfolio. Go + charm.sh concurrent rendering.
 
 ## I Build Things That Work
 
-Rust TypeScript C/C++ Go
-Next.js Bun FastAPI Docker
-ESP32 STM32 Raspberry MQTT
-OpenCV Linux PostgreSQL Assembly
-
-
-Started with robotics (drones, AQI monitors, RFID). Now systems programming + distributed systems.
+Rust TypeScript Go Ruby  
+Next.js Bun FastAPI Rails Ember  
+ESP32 Raspberry Pi Arduino MQTT  
+OpenCV Linux PostgreSQL RISC-V Assembly
 
 ## Currently
 
@@ -50,11 +47,11 @@ Started with robotics (drones, AQI monitors, RFID). Now systems programming + di
 
 ## Talks Of The Town
 
-**UniCS Chair** (1,500 students)  
-Secured £55k budget. Ran Manchester hackathons.
+**UniCS Chair** (1,500+ students)  
+Managed £55k+ budget. Superivsed the direction of GreatUniHacks (200+ participants) and StudentHack (150+ participants).
 
 **Hack Club** (Global)  
-Hack Club Arcade (2k participants, $100k prizes).
+Hack Club Arcade (2,000+ participants, £100,000+ in prizes).
 
 ## Open Source
 
@@ -62,9 +59,7 @@ Hack Club Arcade (2k participants, $100k prizes).
 
 ## Get In Touch
 
-Delhi/Manchester  
+Delhi / Manchester  
 [hello@arpanpandey.dev](mailto:hello@arpanpandey.dev)
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://linkedin.com/in/arpan-pandey)
-
----

@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
 const contentDir = path.join(__dirname, "../src/portfolio-content");
 const outputFile = path.join(__dirname, "../src/lib/portfolioContent.ts");

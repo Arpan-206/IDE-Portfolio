@@ -1,11 +1,11 @@
 "use client";
 
-import "xterm/css/xterm.css";
+import type { FitAddon as FitAddonType } from "@xterm/addon-fit";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ITerminalOptions, Terminal as XTermTerminal } from "xterm";
-import type { FitAddon as FitAddonType } from "@xterm/addon-fit";
-import { theme } from "@/lib/theme";
+import "xterm/css/xterm.css";
 import { fileContents } from "@/lib/portfolioContent";
+import { theme } from "@/lib/theme";
 import { useIDEStore } from "@/store/ideStore";
 
 type XTermTheme = {
@@ -67,7 +67,9 @@ type WasmBindings = {
   default?: (
     input?: RequestInfo | URL | Response | BufferSource | WebAssembly.Module,
   ) => Promise<unknown>;
-  Shell?: new (initJson: string) => {
+  Shell?: new (
+    initJson: string,
+  ) => {
     process: (input: string) => string;
     complete: (input: string) => string;
     history_up: (input: string) => string;
@@ -385,7 +387,9 @@ export default function TerminalPanel() {
           if (output.clear) {
             term.clear();
           } else {
-            output.lines.forEach((line) => term.writeln(line));
+            for (const line of output.lines) {
+              term.writeln(line);
+            }
             if (output.lines.length > 0) {
               term.writeln("");
             }

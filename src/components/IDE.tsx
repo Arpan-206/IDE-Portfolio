@@ -1,18 +1,18 @@
 "use client";
 
+import { Allotment } from "allotment";
 import { useEffect } from "react";
 import { theme } from "@/lib/theme";
-import { Allotment } from "allotment";
 import "allotment/dist/style.css";
+import { fileContents, fileNamesAll } from "@/lib/portfolioContent";
 import { useWindowResize } from "@/lib/useWindowResize";
 import { useIDEStore } from "@/store/ideStore";
-import { fileNames, fileNamesAll, fileContents } from "@/lib/portfolioContent";
-import Toolbar from "./Toolbar";
-import Sidebar from "./Sidebar";
 import BreadCrumb from "./BreadCrumb";
 import Editor from "./Editor";
+import Sidebar from "./Sidebar";
 import StatusBar from "./StatusBar";
 import TabBar from "./TabBar";
+import Toolbar from "./Toolbar";
 
 export default function IDE() {
   const { sidebarMin, sidebarMax } = useWindowResize();
@@ -44,7 +44,7 @@ export default function IDE() {
           openFile(fallback);
         }
       }
-    } catch (e) {
+    } catch (_e) {
       // ignore any parsing errors
     }
     // run once on mount; openFile is stable from zustand but include it to satisfy hooks linter

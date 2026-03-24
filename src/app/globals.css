@@ -47,7 +47,7 @@ body {
 
 /* Force markdown split to stay horizontal */
 .md-split-horizontal .split-view {
-  flex-direction: row !important;
+  flex-direction: row;
 }
 .md-split-horizontal .split-view-view {
   width: 100%;

@@ -1,8 +1,8 @@
 "use client";
 
-import { useIDEStore } from "@/store/ideStore";
-import { theme } from "@/lib/theme";
 import { getLanguageDisplay } from "@/lib/languageMap";
+import { theme } from "@/lib/theme";
+import { useIDEStore } from "@/store/ideStore";
 
 export default function StatusBar() {
   const activeFile = useIDEStore((s) => s.activeFile);

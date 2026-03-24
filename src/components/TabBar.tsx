@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { useIDEStore } from "@/store/ideStore";
-import { theme } from "@/lib/theme";
+import Image from "next/image";
+import { useState } from "react";
 import { getIconPath } from "@/lib/fileIcons";
+import { theme } from "@/lib/theme";
+import { useIDEStore } from "@/store/ideStore";
 
 export default function TabBar() {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
@@ -28,9 +29,19 @@ export default function TabBar() {
         return (
           <div
             key={tab}
-            className="flex items-center justify-between gap-2 pl-4 pr-4 h-full cursor-pointer shrink-0 transition-colors first:pl-5"
+            role="button"
+            tabIndex={0}
+            className="flex items-center justify-between gap-2 pl-4 pr-4 h-full shrink-0 transition-colors first:pl-5"
             onMouseEnter={() => setHoveredTab(tab)}
             onMouseLeave={() => setHoveredTab(null)}
+            onClick={() => openFile(tab)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openFile(tab);
+              }
+            }}
+            aria-pressed={isActive}
             style={{
               fontSize: "12px",
               minWidth: "140px",
@@ -46,14 +57,18 @@ export default function TabBar() {
                   ? `2px solid ${theme.accentRed}`
                   : `1px solid ${theme.accent}`
                 : "1px solid transparent",
+              cursor: "pointer",
             }}
-            onClick={() => openFile(tab)}
           >
-            <span className="flex items-center gap-2">
-              <img src={iconPath} alt="" className="h-3.5 w-3.5" />
+            <div className="flex items-center gap-2">
+              <Image src={iconPath} alt="" width={14} height={14} />
               <span>{tab}</span>
-            </span>
+            </div>
+
+            {/* Close button must be a real button and cannot be nested inside another button.
+                The outer interactive element is a div with role="button", so nesting a button here is valid. */}
             <button
+              type="button"
               className="transition-colors ml-1"
               style={{
                 color: isActive
@@ -64,11 +79,21 @@ export default function TabBar() {
                 fontSize: "11px",
                 background: "transparent",
                 border: "none",
+                outline: "none",
+                cursor: "pointer",
               }}
               onClick={(e) => {
                 e.stopPropagation();
                 closeTab(tab);
               }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  closeTab(tab);
+                }
+              }}
+              aria-label={`Close ${tab}`}
             >
               ×
             </button>

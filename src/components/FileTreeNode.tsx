@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
-import { FileNode } from "@/types/FileNode";
-import { theme } from "@/lib/theme";
+import Image from "next/image";
 import { getIconPath } from "@/lib/fileIcons";
+import { theme } from "@/lib/theme";
+import type { FileNode } from "@/types/FileNode";
 
 interface FileTreeNodeProps {
   node: FileNode;
@@ -18,9 +18,11 @@ interface FileTreeNodeProps {
 
 function FolderIcon({ isOpen }: { isOpen: boolean }) {
   return (
-    <img
+    <Image
       src={isOpen ? "/icons/app/_folder_open.svg" : "/icons/app/_folder.svg"}
       alt=""
+      width={16}
+      height={16}
       className="h-4 w-4 shrink-0"
     />
   );
@@ -52,6 +54,7 @@ export default function FileTreeNode({
     return (
       <div key={node.path}>
         <button
+          type="button"
           onClick={() => toggleFolder(node.path)}
           onMouseEnter={() => setHovered(node.path)}
           onMouseLeave={() => setHovered(null)}
@@ -90,6 +93,7 @@ export default function FileTreeNode({
 
   return (
     <button
+      type="button"
       key={node.path}
       onClick={() => onSelect(node.path)}
       onMouseEnter={() => setHovered(node.path)}
@@ -110,7 +114,13 @@ export default function FileTreeNode({
         marginRight: "2px",
       }}
     >
-      <img src={iconPath} alt="" className="h-3.5 w-3.5 shrink-0" />
+      <Image
+        src={iconPath}
+        alt=""
+        width={14}
+        height={14}
+        className="h-3.5 w-3.5 shrink-0"
+      />
       <span className="truncate">{node.name}</span>
     </button>
   );

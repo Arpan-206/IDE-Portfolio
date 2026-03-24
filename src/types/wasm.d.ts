@@ -1,11 +1,6 @@
 declare module "/wasm/portfolio-wasm/portfolio_wasm.js" {
   const init: (
-    input?:
-      | RequestInfo
-      | URL
-      | Response
-      | BufferSource
-      | WebAssembly.Module,
+    input?: RequestInfo | URL | Response | BufferSource | WebAssembly.Module,
   ) => Promise<unknown>;
 
   export default init;

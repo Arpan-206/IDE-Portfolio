@@ -1,6 +1,6 @@
 {
   "name": "Arpan Pandey",
-  "location": "Manchester, UK",
+  "locations": ["Manchester, UK", "Delhi, India"],
   "links": {
     "github": "https://github.com/Arpan-206",
     "linkedin": "https://linkedin.com/in/arpan-pandey",
