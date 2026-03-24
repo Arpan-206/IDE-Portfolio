@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -90,7 +91,10 @@ export default function RootLayout({
           data-website-id="45f2d98a-df6c-4c68-8c56-215354e04fa9"
         ></script>
       </head>
-      <body className={mono.className}>{children}</body>
+      <body className={mono.className}>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
