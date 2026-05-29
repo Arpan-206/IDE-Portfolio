@@ -71,7 +71,7 @@ export default function IDE() {
 
         <div className="flex flex-1 overflow-hidden">
           <Allotment
-            sizes={sidebarSplitSizes}
+            defaultSizes={sidebarSplitSizes}
             proportionalLayout={true}
             snap
             onChange={(sizes) => {

@@ -66,7 +66,7 @@ export default function Editor() {
         proportionalLayout={true}
         minSize={minSize}
         snap
-        sizes={terminalVisible ? editorSplitSizes : [1, 0]}
+        defaultSizes={terminalVisible ? editorSplitSizes : [1, 0]}
         onChange={(sizes) => {
           if (sizes.length < 2) return;
           if (!terminalVisible) return;
@@ -95,7 +95,7 @@ export default function Editor() {
                 proportionalLayout={true}
                 minSize={minSize}
                 snap
-                sizes={markdownSplitSizes}
+                defaultSizes={markdownSplitSizes}
                 onChange={(sizes) => {
                   if (sizes.length < 2) return;
                   setMarkdownSplitSizes([sizes[0], sizes[1]]);

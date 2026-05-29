@@ -1,7 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const contentDir = path.join(__dirname, "../src/portfolio-content");
+const contentDir = path.join(__dirname, "../src/portfolio-files");
 const outputFile = path.join(__dirname, "../src/lib/portfolioContent.ts");
 
 function listFiles(dir, rootDir) {

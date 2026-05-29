@@ -6,7 +6,7 @@ import type { FileNode } from "@/types/FileNode";
  */
 function buildFileTree(files: string[]): FileNode {
   const root: FileNode = {
-    name: "portfolio-content",
+    name: "portfolio-files",
     type: "folder",
     path: ".",
     children: [],

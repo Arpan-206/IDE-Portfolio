@@ -104,7 +104,7 @@ export default function Toolbar() {
             letterSpacing: "0.02em",
           }}
         >
-          arpan-portfolio
+          Arpan Pandey
         </span>
       </div>
 

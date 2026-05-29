@@ -9,7 +9,7 @@ Interactive developer portfolio with a **Rust WASM terminal** and a **Zed-inspir
 - **Rust WASM Terminal** — Live shell in the browser (xterm.js + Rust WASM, tab completion)
 - **Monaco Editor** — VSCode engine with syntax highlighting
 - **Markdown Preview** — Split view for `.md` files
-- **Live File Tree** — Renders `src/portfolio-content/`
+- **Live File Tree** — Renders `src/portfolio-files/`
 - **Zed-Style Layout** — Allotment splits + custom theme
 - **Multi-file Portfolio** — JSON/RS/Python/TS/TOML content
 
@@ -22,7 +22,7 @@ Interactive developer portfolio with a **Rust WASM terminal** and a **Zed-inspir
 - **State**: Zustand
 - **Tooling**: Bun, Biome
 
-## 📁 Portfolio Structure (`src/portfolio-content/`)
+## 📁 Portfolio Structure (`src/portfolio-files/`)
 
 ```
 readme.md          ← Personal overview
@@ -48,7 +48,7 @@ bun dev
 
 ```
 # Add new portfolio file
-echo "# Skills" > src/portfolio-content/new-skills.md
+echo "# Skills" > src/portfolio-files/new-skills.md
 
 # Regenerate content (auto on dev)
 bun script/generate.js
@@ -75,7 +75,7 @@ Traditional portfolios are static. This one is an **interactive IDE** that showc
 
 ## 🤝 Contributing
 
-1. Fork → edit `src/components/` or `src/portfolio-content/`
+1. Fork → edit `src/components/` or `src/portfolio-files/`
 2. Run `bun run lint`
 3. Open a PR with screenshots
 

@@ -17,7 +17,7 @@ const _EDUCATION: EducationEntry[] = [
     institution: "University of Manchester",
     degree: "BSc Computer Science (Hons)",
     dates: "2024–2027",
-    gpa: "First Class (Year 1 And Y2 Sem 1)",
+    gpa: "First Class Honours (Year 1 And Y2 Sem 1)",
     highlights: [
       "Academic Rep (400 students)",
       "Architecture, Systems, Robotics",

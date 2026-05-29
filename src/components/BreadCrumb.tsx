@@ -18,7 +18,7 @@ export default function BreadCrumb() {
         background: theme.bg,
       }}
     >
-      <span>arpan-portfolio</span>
+      <span>Arpan Pandey</span>
       <span className="mx-1.5">›</span>
       <span style={{ color: theme.textActive }}>{activeFile}</span>
     </div>

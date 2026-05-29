@@ -67,9 +67,7 @@ type WasmBindings = {
   default?: (
     input?: RequestInfo | URL | Response | BufferSource | WebAssembly.Module,
   ) => Promise<unknown>;
-  Shell?: new (
-    initJson: string,
-  ) => {
+  Shell?: new (initJson: string) => {
     process: (input: string) => string;
     complete: (input: string) => string;
     history_up: (input: string) => string;
@@ -200,7 +198,7 @@ async function loadWasmBackend(initPayload: string): Promise<LoadResult> {
     }
 
     if (typeof bindings.default === "function") {
-      await bindings.default(wasmUrl);
+      await bindings.default({ module_or_path: wasmUrl });
     }
 
     if (!bindings.Shell) {

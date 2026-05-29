@@ -1,7 +1,3 @@
-from dataclasses import dataclass
-from typing import List
-
-
 @dataclass
 class Experience:
     company: str
@@ -14,7 +10,7 @@ EXPERIENCE = [
     Experience(
         company="CodeCrafters.io (YC S22)",
         role="Software Engineer",
-        period="Jun 2025 – Present",
+        period="Jun 2025 – Sept 2025",
         achievements=[
             "Designed challenges completed by 10,000+ developers worldwide in 2 months",
             "Built 2 official extensions for Build Your Own Shell, writing Go test harnesses and mastering Bash/Zsh/Ash internals",
@@ -26,7 +22,7 @@ EXPERIENCE = [
     Experience(
         company="UniCS Manchester",
         role="Chair",
-        period="Nov 2024 – Present",
+        period="Nov 2024 – June 2026",
         achievements=[
             "Elected as youngest Chair at 18, representing 1,500+ Computer Science students",
             "Managed £55k+ annual budget; secured sponsorships from Google, Reply, Bank of America, and 10+ others",
@@ -60,11 +56,12 @@ EXPERIENCE = [
     ),
     Experience(
         company="ACM",
-        role="USTPC Member",
+        role="Technical Policy Committee Member",
         period="Mar 2024 – Present",
         achievements=[
-            "Drafted 3 policy proposals for U.S. Congressional Identity Bills within the USTPC Strong Identity Authentication subcommittee",
-            "Led digital identity awareness campaigns reaching 5,000+ people",
+            "Participated in discussions on technical bills as part of ACM committees",
+            "Assisted in developing policy recommendations related to emerging technologies",
+            "Working with other esteemed committee members to create public documents related to AI",
         ],
     ),
     Experience(
