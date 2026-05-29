@@ -1,10 +1,16 @@
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const mono = JetBrains_Mono({ subsets: ["latin"] });
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    webVitals?: any;
+  }
+}
+
+const mono = JetBrains_Mono({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -81,20 +87,21 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.0/files/jetbrains-mono-latin-400-normal.woff2"
+          href="/fonts/jetbrains-mono-400-normal.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <script
-          defer
+      </head>
+      <body className={mono.className}>
+        {children}
+        <Script
           src="https://cloud.umami.is/script.js"
           data-website-id="45f2d98a-df6c-4c68-8c56-215354e04fa9"
-        ></script>
-        <Analytics />
-        <SpeedInsights />
-      </head>
-      <body className={mono.className}>{children}</body>
+          strategy="afterInteractive"
+        />
+        <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
+      </body>
     </html>
   );
 }
