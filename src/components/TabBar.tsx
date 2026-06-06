@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { getIconPath } from "@/lib/fileIcons";
 import { theme } from "@/lib/theme";
@@ -61,7 +60,7 @@ export default function TabBar() {
             }}
           >
             <div className="flex items-center gap-2">
-              <Image src={iconPath} alt="" width={14} height={14} />
+              <img src={iconPath} alt="" width={14} height={14} />
               <span>{tab}</span>
             </div>
 

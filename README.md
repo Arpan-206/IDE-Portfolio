@@ -15,7 +15,7 @@ Interactive developer portfolio with a **Rust WASM terminal** and a **Zed-inspir
 
 ## 🛠 Tech Stack
 
-- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
+- **Frontend**: Astro, React, TypeScript, Tailwind CSS
 - **Editor**: Monaco Editor
 - **Terminal**: xterm.js + Rust WASM backend
 - **Layout**: Allotment
@@ -71,7 +71,7 @@ Traditional portfolios are static. This one is an **interactive IDE** that showc
 
 - **Recruiters** see a live terminal + structured content
 - **Collaborators** browse real data structures
-- **You** ship a real product (Rust WASM + Next.js)
+- **You** ship a real product (Rust WASM + Astro)
 
 ## 🤝 Contributing
 
