@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { getIconPath } from "@/lib/fileIcons";
 import { theme } from "@/lib/theme";
 import type { FileNode } from "@/types/FileNode";
@@ -18,7 +17,7 @@ interface FileTreeNodeProps {
 
 function FolderIcon({ isOpen }: { isOpen: boolean }) {
   return (
-    <Image
+    <img
       src={isOpen ? "/icons/app/_folder_open.svg" : "/icons/app/_folder.svg"}
       alt=""
       width={16}
@@ -114,7 +113,7 @@ export default function FileTreeNode({
         marginRight: "2px",
       }}
     >
-      <Image
+      <img
         src={iconPath}
         alt=""
         width={14}

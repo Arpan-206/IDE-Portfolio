@@ -13,7 +13,7 @@ This portfolio runs **Rust WASM in your browser**. Open the terminal. Type `help
 
 **arpanpandey.dev** (you're here)  
 Zed-inspired IDE with Monaco, live file tree, Rust WASM shell, PDF viewer.  
-Next.js + Bun + allotment + Catppuccin.  
+Astro + Bun + allotment + Catppuccin.  
 [Live](https://arpanpandey.dev) | [Code](https://github.com/Arpan-206/IDE-Portfolio)
 
 **CodeCrafters** (YC 22)  
@@ -35,7 +35,7 @@ Interactive SSH portfolio. Go + charm.sh concurrent rendering.
 ## I Build Things That Work
 
 Rust TypeScript Go Ruby  
-Next.js Bun FastAPI Rails Ember  
+Astro Bun FastAPI Rails Ember  
 ESP32 Raspberry Pi Arduino MQTT  
 OpenCV Linux PostgreSQL RISC-V Assembly
 

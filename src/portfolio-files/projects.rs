@@ -17,7 +17,7 @@ pub const PROJECTS: [Project; 10] = [
     Project {
         name: "IDE-Portfolio",
         description: "Interactive developer portfolio with a Rust WASM terminal and a Zed-inspired UI.",
-        tech: &["Rust", "WASM", "Next.js", "Monaco", "Bun"],
+        tech: &["Rust", "WASM", "Astro", "Monaco", "Bun"],
         url: "https://github.com/Arpan-206/IDE-Portfolio",
         stars: 0,
     },

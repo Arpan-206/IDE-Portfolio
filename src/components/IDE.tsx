@@ -14,7 +14,7 @@ import StatusBar from "./StatusBar";
 import TabBar from "./TabBar";
 import Toolbar from "./Toolbar";
 
-export default function IDE() {
+export default function IDE(_: Record<string, unknown>) {
   const { sidebarMin, sidebarMax } = useWindowResize();
   const sidebarSplitSizes = useIDEStore((s) => s.sidebarSplitSizes);
   const setSidebarSplitSizes = useIDEStore((s) => s.setSidebarSplitSizes);

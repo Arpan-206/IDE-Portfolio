@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import type React from "react";
 import { useState } from "react";
 import { theme } from "@/lib/theme";
@@ -89,7 +88,7 @@ export default function Toolbar() {
             }}
           />
         </div>
-        <Image
+        <img
           src="/icon.svg"
           alt="Arpan Pandey"
           width={16}
@@ -124,7 +123,7 @@ export default function Toolbar() {
           ariaLabel="Terminal"
           onClick={toggleTerminal}
         >
-          <Image
+          <img
             src="/icons/app/bash.svg"
             alt=""
             width={16}

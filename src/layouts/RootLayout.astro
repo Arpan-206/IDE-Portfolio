@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+
+const {
+    title = "Arpan Pandey",
+    description = "Developer portfolio of Arpan Pandey. Projects, writing, and contact information.",
+    canonical = "/",
+} = Astro.props;
+
+const siteUrl = import.meta.env.SITE ?? "https://arpanpandey.dev";
+const canonicalUrl = new URL(canonical, siteUrl).toString();
+const ogImage = new URL("/screenshots/1.png", siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/icon.svg" />
+        <link rel="canonical" href={canonicalUrl} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="application-name" content="Arpan Pandey" />
+        <meta name="author" content="Arpan Pandey" />
+        <meta name="generator" content="Astro" />
+        <meta
+            name="keywords"
+            content="Arpan Pandey, portfolio, developer, software engineer, projects, writing, JavaScript, TypeScript, React, Astro"
+        />
+        <meta name="robots" content="index,follow" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Arpan Pandey" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={ogImage} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+
+        <slot name="head" />
+    </head>
+    <body>
+        <slot />
+
+        <script
+            src="https://cloud.umami.is/script.js"
+            data-website-id="45f2d98a-df6c-4c68-8c56-215354e04fa9"
+            defer></script>
+        <script src="/_vercel/insights/script.js" defer></script>
+    </body>
+</html>

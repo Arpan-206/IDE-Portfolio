@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { visibleFileNames } from "@/lib/portfolioContent";
 import { theme } from "@/lib/theme";
@@ -10,7 +9,7 @@ import FileTreeNode from "./FileTreeNode";
 
 function RootIcon({ isOpen }: { isOpen: boolean }) {
   return (
-    <Image
+    <img
       src={isOpen ? "/icons/app/_root_open.svg" : "/icons/app/_root.svg"}
       alt=""
       width={16}

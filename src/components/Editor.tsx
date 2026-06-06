@@ -1,9 +1,8 @@
 "use client";
 
-import type { Monaco } from "@monaco-editor/react";
+import MonacoEditor, { type Monaco } from "@monaco-editor/react";
 import type { AllotmentHandle } from "allotment";
 import { Allotment } from "allotment";
-import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
@@ -17,10 +16,6 @@ import { fileContents } from "@/lib/portfolioContent";
 import { theme as appTheme } from "@/lib/theme";
 import { useWindowResize } from "@/lib/useWindowResize";
 import { useIDEStore } from "@/store/ideStore";
-
-const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
-  ssr: false,
-});
 
 export default function Editor() {
   const activeFile = useIDEStore((s) => s.activeFile);
