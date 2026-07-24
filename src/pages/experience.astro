@@ -1,0 +1,56 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+import { experience } from "../lib/siteData";
+import { theme } from "../lib/theme";
+---
+
+<RootLayout
+  title="Experience | Arpan Pandey"
+  description="Work and leadership experience across CodeCrafters, UniCS Manchester, Hack Club, and more."
+>
+  <section class="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-8 md:px-6">
+    <div class="max-w-3xl">
+      <p class="text-sm uppercase tracking-[0.2em]" style={`color: ${theme.textMuted};`}>
+        Experience
+      </p>
+      <h1 class="mt-2 text-3xl font-semibold md:text-5xl" style={`color: ${theme.text};`}>
+        Leadership and engineering
+      </h1>
+      <p class="mt-4 text-base leading-7 md:text-lg" style={`color: ${theme.textMuted};`}>
+        Roles that mix software delivery, event leadership, and systems thinking.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {experience.map((entry) => (
+        <article
+          class="rounded-2xl border p-5 md:p-6"
+          style={`border-color: ${theme.border}; background: ${theme.bgPanel};`}
+        >
+          <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h2 class="text-lg font-medium" style={`color: ${theme.text};`}>
+                {entry.role}
+              </h2>
+              <p class="text-sm" style={`color: ${theme.accent};`}>
+                {entry.company}
+              </p>
+            </div>
+            <p class="text-sm" style={`color: ${theme.textMuted};`}>
+              {entry.period}
+            </p>
+          </div>
+
+          <ul class="mt-4 space-y-2 text-sm leading-6" style={`color: ${theme.textMuted};`}>
+            {entry.highlights.map((highlight) => (
+              <li class="flex gap-3">
+                <span style={`color: ${theme.accent};`}>•</span>
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+</RootLayout>

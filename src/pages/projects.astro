@@ -1,0 +1,70 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+import { projects } from "../lib/siteData";
+import { theme } from "../lib/theme";
+---
+
+<RootLayout
+  title="Projects | Arpan Pandey"
+  description="Selected projects from Arpan Pandey, including Rust, WASM, Astro, and systems programming work."
+>
+  <section class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-8 md:px-6">
+    <div class="max-w-3xl">
+      <p class="text-sm uppercase tracking-[0.2em]" style={`color: ${theme.textMuted};`}>
+        Projects
+      </p>
+      <h1 class="mt-2 text-3xl font-semibold md:text-5xl" style={`color: ${theme.text};`}>
+        Things I’ve built
+      </h1>
+      <p class="mt-4 text-base leading-7 md:text-lg" style={`color: ${theme.textMuted};`}>
+        A mix of browser-native tools, systems programming experiments, and production software.
+      </p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {projects.map((project) => (
+        <article
+          class="flex h-full flex-col rounded-2xl border p-5 shadow-sm"
+          style={`border-color: ${theme.border}; background: ${theme.bgPanel};`}
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-medium" style={`color: ${theme.text};`}>
+                {project.name}
+              </h2>
+              {project.stars !== undefined && (
+                <p class="mt-1 text-sm" style={`color: ${theme.textMuted};`}>
+                  {project.stars} stars
+                </p>
+              )}
+            </div>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              class="text-sm underline decoration-dotted underline-offset-4 transition-colors hover:opacity-80"
+              style={`color: ${theme.accent};`}
+            >
+              Open
+            </a>
+          </div>
+
+          <p class="mt-4 flex-1 text-sm leading-6" style={`color: ${theme.textMuted};`}>
+            {project.description}
+          </p>
+
+          <div class="mt-4 flex flex-wrap gap-2">
+            {project.tech.map((tech) => (
+              <span
+                class="rounded-full border px-3 py-1 text-xs"
+                style={`border-color: ${theme.border}; color: ${theme.text}; background: ${theme.bg};`}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</RootLayout>

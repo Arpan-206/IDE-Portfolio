@@ -1,0 +1,44 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+import { contactLinks } from "../lib/siteData";
+import { theme } from "../lib/theme";
+---
+
+<RootLayout
+  title="Contact | Arpan Pandey"
+  description="Ways to reach Arpan Pandey for roles, collaborations, and project ideas."
+>
+  <section class="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 py-8 md:px-6">
+    <div class="max-w-3xl">
+      <p class="text-sm uppercase tracking-[0.2em]" style={`color: ${theme.textMuted};`}>
+        Contact
+      </p>
+      <h1 class="mt-2 text-3xl font-semibold md:text-5xl" style={`color: ${theme.text};`}>
+        Let’s build something
+      </h1>
+      <p class="mt-4 text-base leading-7 md:text-lg" style={`color: ${theme.textMuted};`}>
+        I’m open to internships, part-time roles, open-source contributions, and interesting technical conversations.
+      </p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {contactLinks.map((link) => (
+        <a
+          href={link.href}
+          class="rounded-2xl border p-5 transition-transform hover:-translate-y-0.5"
+          style={`border-color: ${theme.border}; background: ${theme.bgPanel};`}
+        >
+          <h2 class="text-lg font-medium" style={`color: ${theme.text};`}>
+            {link.label}
+          </h2>
+          <p class="mt-2 text-sm leading-6" style={`color: ${theme.textMuted};`}>
+            {link.note}
+          </p>
+          <p class="mt-4 text-sm underline decoration-dotted underline-offset-4" style={`color: ${theme.accent};`}>
+            {link.href}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+</RootLayout>

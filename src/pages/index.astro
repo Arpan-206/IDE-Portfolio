@@ -1,8 +1,9 @@
 ---
 import RootLayout from "../layouts/RootLayout.astro";
 import IDE from "../components/IDE";
+import { hero } from "../lib/siteData";
 ---
 
-<RootLayout>
+<RootLayout title="Arpan Pandey" description={hero.description}>
     <IDE client:only="react" />
 </RootLayout>

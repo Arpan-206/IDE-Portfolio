@@ -2,8 +2,8 @@
 
 import type { FitAddon as FitAddonType } from "@xterm/addon-fit";
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { ITerminalOptions, Terminal as XTermTerminal } from "xterm";
-import "xterm/css/xterm.css";
+import type { ITerminalOptions, Terminal as XTermTerminal } from "@xterm/xterm";
+import "@xterm/xterm/css/xterm.css";
 import { fileContents } from "@/lib/portfolioContent";
 import { theme } from "@/lib/theme";
 import { useIDEStore } from "@/store/ideStore";
@@ -261,7 +261,7 @@ export default function TerminalPanel() {
 
     async function boot() {
       const [{ Terminal }, { FitAddon }] = await Promise.all([
-        import("xterm"),
+        import("@xterm/xterm"),
         import("@xterm/addon-fit"),
       ]);
 

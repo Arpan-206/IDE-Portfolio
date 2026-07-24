@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { theme } from "../lib/theme";
 
 const {
     title = "Arpan Pandey",
@@ -10,6 +11,13 @@ const {
 const siteUrl = import.meta.env.SITE ?? "https://arpanpandey.dev";
 const canonicalUrl = new URL(canonical, siteUrl).toString();
 const ogImage = new URL("/screenshots/1.png", siteUrl).toString();
+const pathname = Astro.url.pathname;
+const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/projects", label: "Projects" },
+    { href: "/experience", label: "Experience" },
+    { href: "/contact", label: "Contact" },
+];
 ---
 
 <!doctype html>
@@ -45,7 +53,63 @@ const ogImage = new URL("/screenshots/1.png", siteUrl).toString();
         <slot name="head" />
     </head>
     <body>
-        <slot />
+        {pathname !== "/" && (
+        <header
+            class="sticky top-0 z-50 border-b backdrop-blur"
+            style={`border-color: ${theme.border}; background: rgba(12, 12, 12, 0.86);`}
+        >
+            <div
+                class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 md:px-6"
+            >
+                <a
+                    href="/"
+                    class="text-sm font-medium uppercase tracking-[0.2em]"
+                    style={`color: ${theme.text};`}
+                >
+                    Arpan Pandey
+                </a>
+                <nav class="flex flex-wrap items-center gap-2 text-sm">
+                    {
+                        navItems.map((item) => {
+                            const isActive =
+                                pathname === item.href ||
+                                (item.href !== "/" &&
+                                    pathname.startsWith(item.href));
+                            return (
+                                <a
+                                    href={item.href}
+                                    class="rounded-full border px-3 py-1 transition-colors"
+                                    aria-current={isActive ? "page" : undefined}
+                                    style={`border-color: ${isActive ? theme.accent : theme.border}; color: ${isActive ? theme.text : theme.textMuted}; background: ${isActive ? theme.bgPanel : theme.bg};`}
+                                >
+                                    {item.label}
+                                </a>
+                            );
+                        })
+                    }
+                </nav>
+            </div>
+        </header>
+        )}
+
+        <main>
+            <slot />
+        </main>
+
+        {pathname !== "/" && (
+        <footer
+            class="border-t px-4 py-6 md:px-6"
+            style={`border-color: ${theme.border}; background: ${theme.bgPanel};`}
+        >
+            <div
+                class="mx-auto flex w-full max-w-6xl flex-col gap-2 text-sm md:flex-row md:items-center md:justify-between"
+                style={`color: ${theme.textMuted};`}
+            >
+                <p>Built with Astro, React islands, and Rust WASM.</p>
+                <p>© 2026 Arpan Pandey</p>
+            </div>
+        </footer>
+        )}
 
         <script
             src="https://cloud.umami.is/script.js"

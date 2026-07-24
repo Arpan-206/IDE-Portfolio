@@ -25,8 +25,7 @@
 
 html,
 body {
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
     background: var(--zed-bg);
     color: var(--zed-text);
     font-family:
@@ -35,6 +34,17 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 /* Fix CLS for split-view layout */
