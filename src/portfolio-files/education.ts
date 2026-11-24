@@ -12,31 +12,65 @@ interface Certification {
   year: number;
 }
 
+interface Publication {
+  title: string;
+  venue: string;
+  year: number;
+  status: "published" | "forthcoming";
+  url: string;
+}
+
 const _EDUCATION: EducationEntry[] = [
   {
     institution: "University of Manchester",
-    degree: "BSc Computer Science (Hons)",
-    dates: "2024–2027",
-    gpa: "First Class Honours (Year 1 And Y2 Sem 1)",
+    degree: "BSc (Hons) Computer Science",
+    dates: "Sep 2024 – Jul 2027",
+    gpa: "76% average to date; First Class marks in Years 1 and 2",
     highlights: [
-      "Academic Rep (400 students)",
-      "Architecture, Systems, Robotics",
-      "Micro-architecture, Algorithms",
+      "Final-year project: spiking neural networks on FPGA for event-camera vision (Supervisor: Dr Davide Bertozzi)",
+      "Computer Architecture, Computer Engineering, Implementing System-on-Chip",
+      "Chip Multiprocessors, Natural Language Processing, Databases",
+      "Elected Academic Representative for 400+ students",
     ],
   },
   {
-    institution: "Army Public School",
-    degree: "CBSE Grade 12 (PCM + CS)",
-    dates: "2022–2024",
+    institution: "Army Public School, Dhaula Kuan",
+    degree: "CBSE Senior Secondary (PCM + CS)",
+    dates: "2016–2024",
     gpa: "94%",
-    highlights: ["Genesis Tech Club President", "TAPSFest (1,000 attendees)"],
+    highlights: [
+      "Genesis Tech Club President (50+ members)",
+      "TAPSFest (3,000+ attendees, 50+ volunteers)",
+    ],
+  },
+];
+
+const _PUBLICATIONS: Publication[] = [
+  {
+    title:
+      "AI-Assisted Software Development, or Vibe Coding: Benefits and Risks of AI-Driven Software Development",
+    venue: "ACM TechBrief, Issue 17, ACM Technology Policy Council",
+    year: 2026,
+    status: "published",
+    url: "https://doi.org/10.1145/3807518",
+  },
+  {
+    title: "No Frames Attached: A Spiking Neural Network for Your Webcam",
+    venue:
+      'XRDS: Crossroads, The ACM Magazine for Students, "Hello World" column',
+    year: 2026,
+    status: "forthcoming",
+    url: "https://github.com/Arpan-206/xrds-snn-hello-world",
   },
 ];
 
 const _CERTIFICATIONS: Certification[] = [
-  { name: "CS50x + Python", issuer: "Harvard", year: 2023 },
-  { name: "CS50 Puzzle Day (Top 89)", issuer: "Harvard", year: 2022 },
+  { name: "Technical AI Safety course", issuer: "BlueDot Impact", year: 2026 },
+  { name: "CS50x + CS50 Python", issuer: "HarvardX", year: 2023 },
+  {
+    name: "CS50 Puzzle Day (Top score, 8 of 9 puzzles)",
+    issuer: "HarvardX",
+    year: 2023,
+  },
   { name: "Three.js Journey", issuer: "Bruno Simon", year: 2023 },
-  { name: "J.P. Morgan SWE Sim", issuer: "Forage", year: 2023 },
-  { name: "PowerPitch Winner", issuer: "NASA Houston", year: 2024 },
 ];

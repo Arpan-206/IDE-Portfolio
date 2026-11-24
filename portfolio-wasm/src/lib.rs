@@ -287,10 +287,11 @@ impl Shell {
                 }
             }
             "about" => {
+                out.lines.push(
+                    "Arpan Pandey — Final-year CS @ Manchester, software engineer".to_string(),
+                );
                 out.lines
-                    .push("Arpan Pandey — Software Engineer".to_string());
-                out.lines
-                    .push("Interests: systems, WebAssembly, hacker UX".to_string());
+                    .push("Interests: hardware-software co-design, neuromorphic systems, operating systems, compilers".to_string());
             }
             "contact" => {
                 out.lines.push("email: hello@arpanpandey.dev".to_string());

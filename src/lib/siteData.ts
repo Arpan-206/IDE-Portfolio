@@ -47,16 +47,17 @@ export const hero = {
   eyebrow: "Astro-native portfolio",
   title: "Arpan Pandey",
   subtitle:
-    "Computer Science student building interactive systems, Rust/WASM tooling, and production software.",
+    "Final-year Computer Science student working on neuromorphic hardware, systems software, and production engineering.",
   description:
-    "This site pairs a static Astro shell with a React-powered IDE workspace, so the content stays fast, SEO-friendly, and easy to browse.",
+    "Portfolio of Arpan Pandey, a final-year Computer Science student at the University of Manchester. Spiking neural networks on FPGA, systems software, and published ACM work, inside a browser IDE.",
 };
 
 export const stats: Stat[] = [
   {
     label: "Current focus",
-    value: "Rust + WASM",
-    description: "Interactive systems, developer tools, and browser-native experiences.",
+    value: "SNNs on FPGA",
+    description:
+      "Hardware-software co-design for event-driven computation, neuromorphic systems, and compilers for novel hardware.",
   },
   {
     label: "Location",
@@ -66,11 +67,20 @@ export const stats: Stat[] = [
   {
     label: "Portfolio mode",
     value: "Astro + React",
-    description: "Static pages for browsing, islands for the real-time workspace.",
+    description:
+      "Static pages for browsing, islands for the real-time workspace.",
   },
 ];
 
 export const featuredProjects: FeaturedProject[] = [
+  {
+    name: "Geppetto",
+    description:
+      "Teaches hand skills from an expert's hands. An expert records a skill with Rokoko Smartgloves II. A learner trains against a 3D ghost hand with a score for each finger, and a robot hand twin performs the same recording. Includes a self-hosted Gemma coach tuned on our own glove data. Built by two people in one weekend at Junction 2026.",
+    tech: ["Python", "FastAPI", "React", "three.js", "Swift", "Gemma", "LoRA"],
+    href: "https://the-geppetto-bodega.netlify.app",
+    note: "Junction 2026: 3rd place Rokoko Robot Teleoperation, 3rd place Verda Compute Track, winner of Best Use of Gemma (Google DeepMind)",
+  },
   {
     name: "IDE-Portfolio",
     description:
@@ -80,17 +90,17 @@ export const featuredProjects: FeaturedProject[] = [
     note: "This site",
   },
   {
-    name: "Rust Microcontroller OS",
+    name: "Bare-metal RISC-V SoC",
     description:
-      "A small operating system with a custom drawing engine for a RISC-V processor.",
-    tech: ["Rust", "Verilog", "RISC-V", "Python"],
+      "An RV32IM system on FPGA with a machine-mode OS layer in RISC-V assembly, a user-mode Rust application, a custom Rust toolchain, and a memory-mapped hardware drawing engine. A two-player Pong game runs on top.",
+    tech: ["Rust", "RISC-V Assembly", "SystemVerilog"],
     href: "https://github.com/Arpan-206/RustMicroController",
   },
   {
     name: "Terminal Portfolio",
     description:
-      "An SSH-based portfolio that runs as a remote terminal experience.",
-    tech: ["Go", "Charm.sh", "Docker"],
+      "An SSH-based TUI portfolio with keyboard navigation and Glamour-rendered markdown. Run: ssh ssh.arpanpandey.dev",
+    tech: ["Go", "Bubble Tea", "Lipgloss", "Glamour", "Wish"],
     href: "https://github.com/Arpan-206/terminal-portfolio",
   },
   {
@@ -106,32 +116,44 @@ export const projects: Project[] = [
   ...featuredProjects,
   {
     name: "CCBench",
-    description: "End-to-end evaluation harness that runs coding agents on small, private codebases to measure genuine reasoning vs. memorisation. Built v0 at CodeCrafters.",
+    description:
+      "End-to-end evaluation harness that runs coding agents on small, private codebases to measure genuine reasoning vs. memorisation. Built v0 at CodeCrafters.",
     tech: ["Rust"],
     href: "https://ccbench.org",
     stars: 25,
   },
   {
     name: "Hack Club Clubs Directory & Jams",
-    description: "Open-source searchable directory connecting Hack Clubs worldwide, plus Hack Club Jams — collaborative coding workshops across the community.",
+    description:
+      "Open-source searchable directory connecting Hack Clubs worldwide, plus Hack Club Jams — collaborative coding workshops across the community.",
     tech: ["FastAPI", "Python", "Web"],
     href: "https://github.com/hackclub/clubsdirectory",
   },
   {
     name: "Mr. Spiky",
-    description: "AI code-review tool that encodes senior developer intuition using spiking neural networks — detects structural red flags across 6 interpretable axes, trained on 2,680+ real-world Python functions.",
-    tech: ["Python", "snnTorch", "FastAPI", "Docker"],
+    description:
+      "AI code-review tool that encodes senior developer intuition using spiking neural networks. It detects structural red flags across 6 interpretable axes, trained on 2,680+ real-world Python functions. Served as a REST API and a GitHub Actions pull-request bot. Winner, Null Hack 3.0.",
+    tech: ["Python", "PyTorch", "snnTorch", "FastAPI", "Docker"],
     href: "https://github.com/Arpan-206/mr-spiky",
   },
   {
+    name: "No Frames Attached",
+    description:
+      "A spiking neural network for your webcam. It turns a five-second webcam capture into an event stream and feeds it to an 8-neuron Brian2 integrator. Companion code for my XRDS Hello World column.",
+    tech: ["Python", "Brian2", "eventify-dvs", "OpenCV"],
+    href: "https://github.com/Arpan-206/xrds-snn-hello-world",
+  },
+  {
     name: "Lox Interpreter (OCaml)",
-    description: "Tree-walk interpreter for the Lox scripting language — tokenizer, parser, and AST evaluator built in OCaml following Crafting Interpreters.",
+    description:
+      "Tree-walk interpreter for the Lox scripting language — tokenizer, parser, and AST evaluator built in OCaml following Crafting Interpreters.",
     tech: ["OCaml", "Dune"],
     href: "https://github.com/Arpan-206/interpreter-ocaml",
   },
   {
     name: "Wack OS",
-    description: "A bare-metal OS kernel targeting x86-64, written in Rust with a custom target specification.",
+    description:
+      "A bare-metal OS kernel targeting x86-64, written in Rust with a custom target specification.",
     tech: ["Rust", "x86-64"],
     href: "https://github.com/Arpan-206/wack_os",
   },
@@ -152,8 +174,7 @@ export const projects: Project[] = [
   },
   {
     name: "EncryptoCLI",
-    description:
-      "Cross-platform CLI for hashing and encryption workflows.",
+    description: "Cross-platform CLI for hashing and encryption workflows.",
     tech: ["Python", "CLI", "GitHub Actions"],
     href: "https://github.com/Arpan-206/EncryptoCLI",
     stars: 7,
@@ -170,24 +191,76 @@ export const projects: Project[] = [
 
 export const experience: ExperienceEntry[] = [
   {
-    company: "CodeCrafters.io (YC S22)",
-    role: "Software Engineer",
-    period: "Apr 2025 – Oct 2025",
+    company: "University of Manchester",
+    role: "Final-Year Project — Spiking Neural Networks on FPGA for Event-Camera Vision",
+    period: "2026 – Present",
     highlights: [
-      "Created systems programming challenges used by 100,000+ developers worldwide.",
-      "Engineered Go-based harnesses for processes, signals, shell execution, and file system behaviour.",
-      "Operated and enhanced a Rails/Ember production platform serving 30k+ monthly active users.",
-      "Improved CI/CD pipelines (Docker, GitHub Actions), increasing reliability and author tooling velocity.",
+      "Building an optimised FPGA implementation (AMD Zynq UltraScale+ ZCU102) of a spiking neural network that selects regions of interest from event-camera output.",
+      "A smaller downstream ANN then classifies only the crop.",
+      "Evaluating power, latency and LUT, FF, BRAM and DSP utilisation against an ARM software baseline and SpiNNaker measurements.",
+      "Supervisor: Dr Davide Bertozzi.",
+    ],
+  },
+  {
+    company: "University of Manchester — Digital Design Laboratory (Verilog)",
+    role: "Volunteer Teaching Assistant",
+    period: "2026 – Present",
+    highlights: [
+      "Two hours weekly supporting first-year students through the Verilog laboratories.",
+      "Explaining concepts left unclear by lectures; triaging and fixing errors in their designs.",
+    ],
+  },
+  {
+    company: "Association for Computing Machinery",
+    role: "Member — Europe Technology Policy Committee",
+    period: "May 2026 – Present",
+    highlights: [
+      "Member of the ACM US Technology Policy Committee from 2023 to 2026.",
+      "Served on the subcommittee on federal digital identity legislation (2024).",
+      "Co-authored ACM TechBrief on Vibe Coding (Issue 17, 2026).",
+    ],
+  },
+  {
+    company: "XRDS: Crossroads, The ACM Magazine for Students",
+    role: "Section Editor — Hello World column",
+    period: "2026 – Present",
+    highlights: [
+      "Edit the hands-on Hello World column.",
+      "Wrote the column 'No Frames Attached: A Spiking Neural Network for Your Webcam' (forthcoming).",
+    ],
+  },
+  {
+    company: "Manchester Institute of Innovation Research",
+    role: "Research Intern",
+    period: "Jun 2026 – Jul 2026",
+    highlights: [
+      "Resolved 5.78M Scopus affiliation IDs to 9,603 universities with a five-tier Polars and RapidFuzz pipeline over 141M records.",
+      "Modelled a 10.19M-edge co-publication network across 170 countries.",
+      "Classified 1.18M AI papers into four collaboration modes with a BERT classifier.",
+      "Shipped the results as an interactive Streamlit and Pydeck atlas, containerised and auto-published to GHCR.",
     ],
   },
   {
     company: "UniCS Manchester",
     role: "Chair",
-    period: "Nov 2024 – Present",
+    period: "Nov 2024 – Jun 2026",
     highlights: [
-      "Representing 1,500+ Computer Science students as the youngest elected Chair.",
-      "Secured £55k+ annual budget and expanded industry partnerships across major tech organisations.",
-      "Directed two flagship Manchester hackathons with 150+ participants each.",
+      "Youngest elected Chair, representing 1,500+ Computer Science students.",
+      "Secured £55k+ annual budget and negotiated sponsor contracts.",
+      "Directed three hackathons (GreatUniHack ×2, StudentHack) with 150+ participants each.",
+      "Rewrote the society's constitution; operational reforms increased event participation by 40%.",
+      "Coordinated May Ball with £23k+ budget, attendance exceeding 180 participants.",
+    ],
+  },
+  {
+    company: "CodeCrafters.io (YC S22)",
+    role: "Software Engineer",
+    period: "Jun 2025 – Sep 2025",
+    highlights: [
+      "Wrote Go test harnesses that deterministically verify systems-programming challenges.",
+      "Built two official extensions for the Build Your Own Shell challenge.",
+      "Maintained the production Rails and Ember platform behind challenges used by 100,000+ developers: monitoring, dependencies, builds and deployments.",
+      "Designed and built CCBench, an evaluation of LLM coding agents on real systems challenges, published at ccbench.org.",
     ],
   },
   {
@@ -195,8 +268,8 @@ export const experience: ExperienceEntry[] = [
     role: "Software Developer",
     period: "Jan 2025 – May 2025",
     highlights: [
-      "Designed Python/SQL data pipelines that reduced research workload by 60%.",
-      "Delivered reproducible dashboards used in commercialisation of a research project.",
+      "Built Python and SQL pipelines and dashboards for research teams, cutting manual research workload by 60%.",
+      "Gathered requirements from a research team and delivered Streamlit dashboards for non-technical users.",
     ],
   },
   {
@@ -204,41 +277,62 @@ export const experience: ExperienceEntry[] = [
     role: "Director — Special Activities Division & Club Operations",
     period: "May 2023 – Jan 2025",
     highlights: [
-      "During Hack Club Arcade, engaging 2,000+ global participants and executing 20+ large-scale online events.",
+      "Helped run Hack Club Arcade: 2,000+ global participants and 20+ large-scale online events.",
       "Distributed over $100,000 in prizes (MacBooks, Framework laptops, iPads).",
       "Recruited and led a global 15-member remote team, increasing participation by 150%.",
-      "Supported onboarding for 200+ APAC/EU club leaders and built 10+ automation tools.",
+      "Co-built a ten-person fraud prevention team: standards of evidence, investigation process and appeals.",
+      "Built a portal to verify Government of India digitally signed ID documents.",
+      "Supported onboarding for 200+ APAC/EU club leaders; built 10+ automation tools reducing onboarding time by 30%.",
+      "Coordinated end-to-end supply chain, shipping 5,000+ items globally.",
     ],
   },
   {
-    company: "IHFC (I-Hub Foundation for Cobotics) IIT Delhi",
+    company: "IHFC (Technology Innovation Hub, IIT Delhi)",
     role: "Robotics Intern",
     period: "Jun 2024 – Aug 2024",
     highlights: [
-      "Participated in UAV and glider prototyping focusing on airframe structure and electronics layout.",
+      "Prototyped and field-tested UAV and glider airframes with IIT Delhi researchers.",
       "Assisted with construction, material testing, and iterative field tests.",
-      "Documented aerodynamic observations for design feedback with IIT Delhi researchers.",
+      "Documented aerodynamic observations for design feedback.",
     ],
   },
   {
-    company: "Association for Computing Machinery",
-    role: "Student Contributor — US Technical Policy Council",
-    period: "Mar 2024 – Present",
+    company: "UniCS, University of Manchester",
+    role: "Workshop Instructor",
+    period: "2024 – 2026",
     highlights: [
-      "Contributed research to identity authentication policy proposals and public education efforts.",
-      "Co-authored a TechBrief on VibeCoding published by ACM (Spring 2026, Issue 17).",
+      "Designed and led an introduction to electronics and PCB design with EasyEDA for about 60 attendees.",
+      "Panellist, first-year COMP16321 panel: Surviving and Thriving in Computer Science (2026).",
+    ],
+  },
+  {
+    company: "Schoolhouse.world",
+    role: "Volunteer Peer Tutor",
+    period: "2022 – 2024",
+    highlights: [
+      "Hosted 15 introductory programming sessions for 23 learners in 12 countries.",
     ],
   },
 ];
 
 export const publications: Publication[] = [
   {
-    title: "ACM TechBrief: AI-Assisted Software Development, or Vibe Coding: Benefits and Risks of AI-Driven Software Development",
-    authors: "Simson Garfinkel; Arpan Pandey; Mohan Sankaran; Rohan Sharma; Arunachalam Balasubramanian Shrinivass; Aruun Kumar",
+    title:
+      "ACM TechBrief: AI-Assisted Software Development, or Vibe Coding: Benefits and Risks of AI-Driven Software Development",
+    authors:
+      "Simson Garfinkel; Mohan Sankaran; Rohan Sharma; Arunachalam Balasubramanian Shrinivass; Arpan Pandey; Aruun Kumar",
     publisher: "Association for Computing Machinery",
     year: 2026,
-    note: "TechBrief — Spring 2026, Issue 17. ISBN: 979-8-4007-3219-5. Published 28 April 2026.",
-    href: "https://dl.acm.org/doi/book/10.1145/3807518",
+    note: "TechBrief — Issue 17, ACM Technology Policy Council. ISBN: 979-8-4007-3219-5. Published 28 April 2026.",
+    href: "https://doi.org/10.1145/3807518",
+  },
+  {
+    title: "No Frames Attached: A Spiking Neural Network for Your Webcam",
+    authors: "Arpan Pandey",
+    publisher: "XRDS: Crossroads, The ACM Magazine for Students",
+    year: 2026,
+    note: "Hello World column. Accepted September 2026, forthcoming.",
+    href: "https://github.com/Arpan-206/xrds-snn-hello-world",
   },
 ];
 
@@ -254,6 +348,16 @@ export const contactLinks: ContactLink[] = [
     note: "Professional updates and contact.",
   },
   {
+    label: "Google Scholar",
+    href: "https://scholar.google.com/citations?user=V9eAdjIAAAAJ",
+    note: "Publications and citations.",
+  },
+  {
+    label: "ORCID",
+    href: "https://orcid.org/0000-0002-1065-2016",
+    note: "Researcher identifier.",
+  },
+  {
     label: "Portfolio",
     href: "https://arpanpandey.dev",
     note: "This site, rebuilt with Astro.",
@@ -261,14 +365,39 @@ export const contactLinks: ContactLink[] = [
   {
     label: "Email",
     href: "mailto:hello@arpanpandey.dev",
-    note: "Best for roles, collaborations, and project ideas.",
+    note: "Best for graduate roles, research collaborations, and project ideas.",
   },
 ];
 
 export const skillGroups: SkillGroup[] = [
   {
+    title: "Hardware",
+    items: [
+      "SystemVerilog",
+      "Verilog",
+      "Vivado",
+      "Vitis HLS",
+      "FPGA (ZCU102)",
+      "RISC-V",
+    ],
+  },
+  {
     title: "Languages",
-    items: ["Python", "Rust", "Go", "TypeScript", "C/C++", "Java", "Ruby", "SQL", "Verilog"],
+    items: [
+      "Python",
+      "Rust",
+      "Go",
+      "TypeScript",
+      "C/C++",
+      "OCaml",
+      "Java",
+      "Ruby",
+      "SQL",
+    ],
+  },
+  {
+    title: "ML and data",
+    items: ["PyTorch", "snnTorch", "Brian2", "BERT", "Polars", "NetworkX"],
   },
   {
     title: "Web",
@@ -276,10 +405,19 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Systems",
-    items: ["Docker", "GitHub Actions", "Linux", "PostgreSQL", "WASM", "Temporal", "Sentry", "Caddy"],
+    items: [
+      "Docker",
+      "GitHub Actions",
+      "Linux",
+      "PostgreSQL",
+      "WASM",
+      "Temporal",
+      "Sentry",
+      "Caddy",
+    ],
   },
   {
     title: "Embedded",
-    items: ["Raspberry Pi", "Arduino", "ESP32", "OpenCV", "RISC-V"],
+    items: ["Raspberry Pi", "Arduino", "ESP32", "OpenCV"],
   },
 ];

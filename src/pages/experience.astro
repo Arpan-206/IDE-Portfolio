@@ -1,12 +1,12 @@
 ---
 import RootLayout from "../layouts/RootLayout.astro";
-import { experience } from "../lib/siteData";
+import { experience, publications } from "../lib/siteData";
 import { theme } from "../lib/theme";
 ---
 
 <RootLayout
   title="Experience | Arpan Pandey"
-  description="Work and leadership experience across CodeCrafters, UniCS Manchester, Hack Club, and more."
+  description="Research, engineering, teaching, and leadership experience across the University of Manchester, CodeCrafters, ACM, UniCS, Hack Club, and more."
 >
   <section class="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-8 md:px-6">
     <div class="max-w-3xl">
@@ -14,10 +14,10 @@ import { theme } from "../lib/theme";
         Experience
       </p>
       <h1 class="mt-2 text-3xl font-semibold md:text-5xl" style={`color: ${theme.text};`}>
-        Leadership and engineering
+        Research, engineering, and leadership
       </h1>
       <p class="mt-4 text-base leading-7 md:text-lg" style={`color: ${theme.textMuted};`}>
-        Roles that mix software delivery, event leadership, and systems thinking.
+        Roles that mix hardware research, software delivery, teaching, and community leadership.
       </p>
     </div>
 
@@ -49,6 +49,53 @@ import { theme } from "../lib/theme";
               </li>
             ))}
           </ul>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-4 max-w-3xl">
+      <p class="text-sm uppercase tracking-[0.2em]" style={`color: ${theme.textMuted};`}>
+        Publications
+      </p>
+      <h2 class="mt-2 text-2xl font-semibold md:text-3xl" style={`color: ${theme.text};`}>
+        Published work
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      {publications.map((publication) => (
+        <article
+          class="rounded-2xl border p-5 md:p-6"
+          style={`border-color: ${theme.border}; background: ${theme.bgPanel};`}
+        >
+          <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h3 class="text-lg font-medium" style={`color: ${theme.text};`}>
+                {publication.title}
+              </h3>
+              <p class="text-sm" style={`color: ${theme.accent};`}>
+                {publication.publisher}
+              </p>
+            </div>
+            <p class="text-sm" style={`color: ${theme.textMuted};`}>
+              {publication.year}
+            </p>
+          </div>
+          <p class="mt-4 text-sm leading-6" style={`color: ${theme.textMuted};`}>
+            {publication.authors}
+          </p>
+          <p class="mt-2 text-sm leading-6" style={`color: ${theme.textMuted};`}>
+            {publication.note}
+          </p>
+          <a
+            href={publication.href}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-4 inline-block break-all text-sm underline decoration-dotted underline-offset-4 transition-colors hover:opacity-80"
+            style={`color: ${theme.accent};`}
+          >
+            {publication.href}
+          </a>
         </article>
       ))}
     </div>

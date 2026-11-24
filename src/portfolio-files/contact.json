@@ -1,17 +1,20 @@
 {
   "name": "Arpan Pandey",
   "locations": ["Manchester, UK", "Delhi, India"],
+  "email": "hello@arpanpandey.dev",
   "links": {
     "github": "https://github.com/Arpan-206",
     "linkedin": "https://linkedin.com/in/arpan-pandey",
-    "portfolio": "https://arpanpandey.dev"
+    "portfolio": "https://arpanpandey.dev",
+    "orcid": "https://orcid.org/0000-0002-1065-2016",
+    "scholar": "https://scholar.google.com/citations?user=V9eAdjIAAAAJ"
   },
+  "graduating": "Summer 2027",
   "open_to": [
     "Anything tech related",
-    "Internships",
-    "Part-time roles",
+    "Graduate roles",
+    "Research collaborations",
     "Open Source Contributions",
-    "Hackathon collabs",
-    "UniCS sponsorships"
+    "Hackathon collabs"
   ]
 }

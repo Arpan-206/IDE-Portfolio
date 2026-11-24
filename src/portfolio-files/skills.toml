@@ -1,47 +1,83 @@
+[hardware]
+systemverilog = "proficient"
+verilog = "proficient"
+vivado = "proficient"
+vitis-hls = "familiar"
+fpga = "AMD Zynq UltraScale+ ZCU102"
+risc-v = "proficient"
+
 [languages]
 python = "expert"
-typescript = "proficient"
-go = "proficient"
 rust = "proficient"
+go = "proficient"
+typescript = "proficient"
+"c/c++" = "proficient"
+java = "proficient"
 ruby = "proficient"
-javascript = "proficient"
 sql = "proficient"
-java = "familiar"
+javascript = "proficient"
+ocaml = "familiar"
 riscv-asm = "familiar"
+
+[ml-and-data]
+pytorch = "proficient"
+snntorch = "proficient"
+polars = "proficient"
+bert = "familiar"
+brian2 = "familiar"
+networkx = "familiar"
+numpy = "proficient"
 
 [web]
 rails = "proficient"
 ember = "proficient"
 react = "proficient"
-nextjs = "proficient"
 fastapi = "proficient"
 django = "familiar"
-astro = "familiar"
+flask = "familiar"
+astro = "proficient"
+html5 = "proficient"
 
 [systems]
 docker = "proficient"
 github-actions = "proficient"
 linux = "expert"
+debian = "proficient"
 postgresql = "proficient"
 temporal = "familiar"
 sentry = "familiar"
-mqtt = "familiar"
+caddy = "familiar"
+wasm = "familiar"
 
 [embedded]
 rpi = "proficient"
 arduino = "proficient"
 esp32 = "proficient"
-stm32 = "familiar"
 opencv = "familiar"
-wasm = "familiar"
 
 [devtools]
 git = "expert"
 bash = "proficient"
 zsh = "proficient"
 
+[spoken]
+english = "bilingual"
+hindi = "bilingual"
+german = "beginner"
+
 [awards]
+junction_rokoko = "3rd place – Rokoko Robot Teleoperation Challenge, Junction 2026"
+junction_verda = "3rd place – Verda Compute Track, Junction 2026"
+junction_gemma = "Winner – Best Use of Gemma (Google DeepMind), Junction 2026"
+null_hack = "Winner – Null Hack 3.0, Null Fellowship; Null Fellows residency (2026)"
+yc_startup_school = "Selected attendee – Y Combinator AI Startup School, San Francisco (2026)"
+acm_techbrief = "ACM TechBrief Co-Author – Vibe Coding, Issue 17 (2026)"
 nasa = "PowerPitch Winner – Conrad Challenge 2024, NASA Space Center Houston"
-hashnodex = "Thirdweb Hackathon Winner 2023 (300+ teams)"
-epoch = "Epoch Hackathon Winner 2022 – Asia's largest HS hackathon (70+ teams)"
-cs50_puzzle = "CS50 Puzzle Day – Top 8/9 globally (2022)"
+hashnode_thirdweb = "Winner – Hashnode x Thirdweb Hackathon (2023)"
+hashnode_hasura = "Runner-up – Hashnode x Hasura Hackathon (2023)"
+cs50_puzzle = "CS50 Puzzle Day – Top score, 8 of 9 puzzles (2023)"
+epoch = "Winner – Epoch Hackathon, New Delhi (2022)"
+
+[radio]
+india = "VU3OIZ"
+us = "KC1TPD (FCC General class)"

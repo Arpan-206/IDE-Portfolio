@@ -6,7 +6,7 @@ import { theme } from "../lib/theme";
 
 <RootLayout
   title="Projects | Arpan Pandey"
-  description="Selected projects from Arpan Pandey, including Rust, WASM, Astro, and systems programming work."
+  description="Selected projects from Arpan Pandey, including a bare-metal RISC-V system, spiking neural networks, Rust, WASM, and systems programming work."
 >
   <section class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-8 md:px-6">
     <div class="max-w-3xl">
@@ -17,7 +17,7 @@ import { theme } from "../lib/theme";
         Things I’ve built
       </h1>
       <p class="mt-4 text-base leading-7 md:text-lg" style={`color: ${theme.textMuted};`}>
-        A mix of browser-native tools, systems programming experiments, and production software.
+        A mix of hardware, spiking neural networks, systems programming experiments, and production software.
       </p>
     </div>
 
@@ -32,6 +32,11 @@ import { theme } from "../lib/theme";
               <h2 class="text-lg font-medium" style={`color: ${theme.text};`}>
                 {project.name}
               </h2>
+              {project.note && (
+                <p class="mt-1 text-sm" style={`color: ${theme.accent};`}>
+                  {project.note}
+                </p>
+              )}
               {project.stars !== undefined && (
                 <p class="mt-1 text-sm" style={`color: ${theme.textMuted};`}>
                   {project.stars} stars
